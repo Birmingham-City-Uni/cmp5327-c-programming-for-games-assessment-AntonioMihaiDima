@@ -6,15 +6,17 @@
 #include <SDL.h>
 using namespace std;
 
-bool quitting = false;
+#undef main
+
+static bool quitting = false;
 //Calculate framerate
-Uint32 lastFrameStartTime = 0;
+static Uint32 lastFrameStartTime = 0;
 //The last event SDL recieved.
-SDL_Event e;
+static SDL_Event e;
 //Initialise an empty window.
-SDL_Window* window = nullptr;
+static SDL_Window* window = nullptr;
 //Surface of the window where we can render.
-SDL_Surface* screenSurface = nullptr;
+static SDL_Surface* screenSurface = nullptr;
 
 void Update()
 {
