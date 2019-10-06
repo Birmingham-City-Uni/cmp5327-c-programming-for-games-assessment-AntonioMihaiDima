@@ -1,4 +1,6 @@
 ﻿  Generating code
-  All 13 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  0 of 13 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   C++ GameLoop.vcxproj -> C:\Users\dimaa\Documents\GitHub\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\x64\Release\C++ GameLoop.exe

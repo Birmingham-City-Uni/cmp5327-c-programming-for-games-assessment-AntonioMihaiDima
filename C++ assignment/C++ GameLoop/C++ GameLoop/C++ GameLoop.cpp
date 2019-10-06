@@ -8,6 +8,10 @@ using namespace std;
 
 #undef main
 
+/*
+Moodle.bcu.ac.uk. (2019). CMP5327 C++ Programming For Games A S1 2019/0 SDL Bouncing ball template project. [online] 
+Available at: https://moodle.bcu.ac.uk/course/view.php?id=76001 [Accessed 5 Oct. 2019].
+*/
 static bool quitting = false;
 //Calculate framerate
 static Uint32 lastFrameStartTime = 0;
