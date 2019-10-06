@@ -22,6 +22,7 @@ static SDL_Window* window = nullptr;
 //Surface of the window where we can render.
 static SDL_Surface* screenSurface = nullptr;
 
+
 void Update()
 {
 	//Get the time at the start of this frame,
@@ -72,19 +73,18 @@ void Input()
 }
 
 
-
-
-
 int main(int argc, char* args[])
 {
 	Input();
 
 	while (!quitting) 
 	{
-		
+
 		Update();
-		
+
+				
 		Render();
+
 	}
 
 	SDL_DestroyWindow(window);
