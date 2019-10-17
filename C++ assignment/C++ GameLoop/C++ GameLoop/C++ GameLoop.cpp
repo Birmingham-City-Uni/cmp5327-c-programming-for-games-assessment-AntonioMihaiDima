@@ -53,6 +53,11 @@ void Render()
 
 void Input()
 {
+	
+}
+
+void Init()
+{
 	//Initialise the program. If there is an error quit the game.
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
@@ -75,10 +80,14 @@ void Input()
 
 int main(int argc, char* args[])
 {
-	Input();
+	Init();
+
 
 	while (!quitting) 
 	{
+
+		Input();
+
 
 		Update();
 
