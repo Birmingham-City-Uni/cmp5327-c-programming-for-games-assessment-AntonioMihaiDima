@@ -36,10 +36,10 @@ void GameLoop::init(const char* title, int xpos, int ypos, int width, int height
 			cout << "Renderer created!" << endl;
 		}
 
-		running = true;
+		quit = false;
 
 	}
-	else running = false;
+	else quit = true;
 }
 
 void GameLoop::processInput()
@@ -50,7 +50,7 @@ void GameLoop::processInput()
 
 	{
 	case SDL_QUIT:
-		running = false;
+		quit = true;
 		break;
 
 

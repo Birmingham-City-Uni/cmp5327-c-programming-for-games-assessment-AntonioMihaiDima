@@ -22,14 +22,11 @@ public:
 
 	void clean();
 
-	bool run() {
-		return running;
-	}
+	bool quit = false;
 
 
 private:
 	int count = 0;
-	bool running = true;
 	SDL_Window* window;
 	SDL_Renderer * renderer;
 

@@ -24,7 +24,7 @@ int main(int argc, char* args[])
 
 	game->init("2D Shooter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
 
-	while (game->run())
+	while (game ->quit == false)
 	{
 		game->processInput();
 		game->update();
