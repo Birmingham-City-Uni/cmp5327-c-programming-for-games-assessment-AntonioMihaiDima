@@ -2,6 +2,10 @@
 #include "GameLoop.h"
 using namespace std;
 
+
+SDL_Texture* PlayerTex;
+SDL_Rect srcR, destR;//W and H for dimension, X and Y for movement!!
+
 GameLoop::GameLoop()
 {
 
@@ -20,7 +24,7 @@ void GameLoop::init(const char* title, int xpos, int ypos, int width, int height
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+ 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
 		cout << "Subsystems Initialized" << endl;
 		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
@@ -39,7 +43,12 @@ void GameLoop::init(const char* title, int xpos, int ypos, int width, int height
 		quit = false;
 
 	}
-	else quit = true;
+	else quit = true; 
+
+	SDL_Surface* tmpSurface = IMG_Load("debug/Dirt.jpg");
+	PlayerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+	SDL_FreeSurface(tmpSurface);
+
 }
 
 void GameLoop::processInput()
@@ -63,12 +72,17 @@ void GameLoop::processInput()
 void GameLoop::update()
 {
 	count++;
+	destR.h = 32;
+	destR.w = 32;
+	
+	
 	cout << count << endl;
 }
 
 void GameLoop::render()
 {
 	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, PlayerTex, NULL, &destR);
 	SDL_RenderPresent(renderer);
 }
 

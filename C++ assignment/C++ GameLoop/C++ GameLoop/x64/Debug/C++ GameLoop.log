@@ -1,0 +1,25 @@
+﻿  C++ GameLoop.cpp
+  GameLoop.cpp
+  Player.cpp
+  Generating Code...
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+Player.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "public: void __cdecl GameLoop::clean(void)" (?clean@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: void __cdecl GameLoop::processInput(void)" (?processInput@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateRenderer referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+Player.obj : error LNK2001: unresolved external symbol SDL_CreateTextureFromSurface
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl GameLoop::render(void)" (?render@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderCopy referenced in function "public: void __cdecl GameLoop::render(void)" (?render@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderPresent referenced in function "public: void __cdecl GameLoop::render(void)" (?render@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_DestroyRenderer referenced in function "public: void __cdecl GameLoop::clean(void)" (?clean@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "public: void __cdecl GameLoop::clean(void)" (?clean@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+Player.obj : error LNK2001: unresolved external symbol IMG_Load
+.\SDL2-2.0.10\lib\x86\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+.\SDL2-2.0.10\lib\x86\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+.\SDL2-2.0.10\lib\x86\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\S18125008\Desktop\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima-master\C++ assignment\C++ GameLoop\x64\Debug\C++ GameLoop.exe : fatal error LNK1120: 14 unresolved externals

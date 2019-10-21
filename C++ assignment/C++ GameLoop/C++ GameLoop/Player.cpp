@@ -8,7 +8,7 @@ Player::Player(SDL_Renderer * renderer)
 
 void Player::Init()
 {
-	SDL_Surface * surface = IMG_Load("Dirt.bmp");
+	SDL_Surface * surface = IMG_Load("Dirt.jpg");
 	this->texture = SDL_CreateTextureFromSurface(this->renderer, surface);
 	SDL_FreeSurface(surface);
 }

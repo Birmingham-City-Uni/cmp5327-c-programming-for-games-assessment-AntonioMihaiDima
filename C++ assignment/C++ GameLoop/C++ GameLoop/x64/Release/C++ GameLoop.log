@@ -1,8 +1,7 @@
-﻿  C++ GameLoop.cpp
-  GameLoop.cpp
+﻿  GameLoop.cpp
   Generating code
-  7 of 18 functions (38.9%) were compiled, the rest were copied from previous compilation.
+  2 of 18 functions (11.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  C++ GameLoop.vcxproj -> C:\Users\dimaa\Documents\GitHub\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\x64\Release\C++ GameLoop.exe
+  C++ GameLoop.vcxproj -> C:\Users\S18125008\Desktop\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima-master\C++ assignment\C++ GameLoop\x64\Release\C++ GameLoop.exe
