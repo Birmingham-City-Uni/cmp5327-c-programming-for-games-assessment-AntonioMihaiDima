@@ -1,96 +1,89 @@
 #include "pch.h"
 #include "GameLoop.h"
-using namespace std;
-
-
-SDL_Texture* PlayerTex;
-SDL_Rect srcR, destR;//W and H for dimension, X and Y for movement!!
 
 GameLoop::GameLoop()
 {
 
 }
 
-GameLoop::~GameLoop()
+bool GameLoop::init()
 {
+	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+		std::cerr << "Could not initialise SDL: " << SDL_GetError();
+		return false;
+	}
+	window = SDL_CreateWindow(
+		"2D Shooter",
+		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		800, 608,
+		SDL_WINDOW_SHOWN
+	);
+
+	if (!window) {
+		std::cerr << "Could not create SDL window: " << SDL_GetError();
+		return false;
+	}
+
+	// Create renderer
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	if (!renderer) {
+		std::cout << "Error creating renderer:" << SDL_GetError() << std::endl;
+		return false;
+	}
+
+	//process initialisation for game classes here
+
+	tilemap = new Tilemap(this->renderer);
+	tilemap->init();
 
 }
 
-void GameLoop::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
+bool GameLoop::processInput()
 {
-	int flags = 0;
-	if (fullscreen)
-	{
-		flags = SDL_WINDOW_FULLSCREEN;
-	}
-
- 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
-	{
-		cout << "Subsystems Initialized" << endl;
-		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-		if (window)
-		{
-			cout << "Window created!" << endl;
+	SDL_Event e;
+	while (SDL_PollEvent(&e)) {
+		if (e.type == SDL_QUIT) {
+			return false;
 		}
 
-		renderer = SDL_CreateRenderer(window, -1, 0);
-		if (renderer)
-		{
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-			cout << "Renderer created!" << endl;
-		}
+		//process any input for game classes here
 
-		quit = false;
-
+		tilemap->processInput(e);
 	}
-	else quit = true; 
 
-	SDL_Surface* tmpSurface = IMG_Load("debug/Dirt.jpg");
-	PlayerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-	SDL_FreeSurface(tmpSurface);
-
-}
-
-void GameLoop::processInput()
-{
-	SDL_Event event;
-	SDL_PollEvent(&event);
-	switch (event.type)
-
-	{
-	case SDL_QUIT:
-		quit = true;
-		break;
-
-
-	default:
-		break;
-	}
-	
+	return true;
 }
 
 void GameLoop::update()
 {
-	count++;
-	destR.h = 32;
-	destR.w = 32;
-	
-	
-	cout << count << endl;
+	//process updating for game classes here
+
+	tilemap->update();
+
 }
 
-void GameLoop::render()
+void GameLoop::draw()
 {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, PlayerTex, NULL, &destR);
+
+	//process drawing for game classes here
+
+	tilemap->draw();
+
 	SDL_RenderPresent(renderer);
+	SDL_Delay(16);
 }
 
 void GameLoop::clean()
 {
-	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
-	SDL_Quit();
-	cout << "Game cleaned!" << endl;
+	//process clean up for game classes here
+	tilemap->clean();
+	if (tilemap)
+	{
+		delete tilemap;
+		tilemap = nullptr;
+	}
+
+
 }
 

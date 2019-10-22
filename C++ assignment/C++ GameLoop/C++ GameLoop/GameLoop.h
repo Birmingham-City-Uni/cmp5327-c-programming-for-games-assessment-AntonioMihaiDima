@@ -1,39 +1,35 @@
-#ifndef GameLoop_h
-#define GameLoop_h
-
+#pragma once
 
 #include <SDL.h>
 #include <iostream>
-#include "SDL_image.h"
+#include "Tilemap.h"
+
+using namespace std;
+
 
 
 class GameLoop {
 
 public:
 	GameLoop();
-	~GameLoop();
 
-	void init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
+	bool init();
 
-	void processInput();
+	bool processInput();
 
 	void update(); //returns true only if appplication is closed
 
-	void render();
+	void draw();
 
 	void clean();
 
-	bool quit = false;
-
 
 private:
-	int count = 0;
 	SDL_Window* window;
 	SDL_Renderer * renderer;
 
+	Tilemap * tilemap;
+
 };
-
-#endif /*GameLoop_h*/
-
 
 

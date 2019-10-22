@@ -18,10 +18,10 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="GameLoop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameLoop.h">
+    <ClInclude Include="Tilemap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClCompile Include="C++ GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameLoop.cpp">
+    <ClCompile Include="Tilemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
