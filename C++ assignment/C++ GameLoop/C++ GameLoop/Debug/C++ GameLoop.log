@@ -1,2 +1,8 @@
-﻿  Tilemap.cpp
+﻿  C++ GameLoop.cpp
+  GameLoop.cpp
+  Tilemap.cpp
+  Wall.cpp
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\wall.cpp(19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\gameloop.cpp(39): warning C4715: 'GameLoop::init': not all control paths return a value
   C++ GameLoop.vcxproj -> D:\C++ assignment\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe

@@ -1,6 +1,7 @@
 #include "Wall.h"
 #include "pch.h"
-#include <stdlib.h> 
+#include <stdlib.h>
+#include "time.h"
 using namespace std;
 
 
@@ -15,16 +16,24 @@ Wall::Wall(SDL_Renderer * renderer)
 void Wall::counter()
 {
 
-	for (int i = 0; i < 16; i++)
+	srand(time(0));
+
+	for (int i = 0; i < 8; i++)
 	{
 		wallarray[i] = 50;
 	}
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < 8; i++)
 	{
-		wallarray[i] = rand() % 25 + 1;
-		for (int j = 0; j < 16; j++)
-			if (wallarray[i] != wallarray[j])
-				i -= 1;
+		wallarray[i] = rand() % 23 + 1;
+		/*for (int j = 0; j < 10; j++)
+		{
+			if (wallarray[i] == wallarray[j])
+
+				i = i - 1;
+			break;
+		}
+		*/
+				
 
 	}
 }
@@ -57,13 +66,14 @@ void Wall::draw()
 	{
 		SDL_Rect position = { i * 768, j * 32, 32, 32 };
 		SDL_RenderCopy(this->renderer, WallTex, NULL, &position);
+		
 	}
 
-	for (int i = 0; i < 16; i++)
-	{
-		SDL_Rect randposition = { wallarray[i] * 32, wallarray[i + 1] * 32, 32, 32 };
-		SDL_RenderCopy(this->renderer, WallTex, NULL, &randposition);
-	}
+		for (int i = 0; i < 8; i++)
+		{
+			SDL_Rect randposition = { wallarray[i] * 32, wallarray[i + 1] * 32, 32, 32 };
+			SDL_RenderCopy(this->renderer, WallTex, NULL, &randposition);
+		}
 	
 
 }

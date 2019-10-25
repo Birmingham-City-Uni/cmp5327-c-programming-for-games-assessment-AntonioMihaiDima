@@ -20,7 +20,8 @@ public:
 
 
 
-	int wallarray[16];
+	int wallarray[8];
+	bool pickwalls = true;
 	
 
 

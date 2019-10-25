@@ -27,6 +27,8 @@ void Tilemap::init()
 		position.y = 0;
 		position.h = 32;
 		position.w = 32;
+
+		wall->counter();
 	
 
 }
