@@ -15,7 +15,7 @@ bool GameLoop::init()
 	window = SDL_CreateWindow(
 		"2D Shooter",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		800, 608,
+		800, 800,
 		SDL_WINDOW_SHOWN
 	);
 

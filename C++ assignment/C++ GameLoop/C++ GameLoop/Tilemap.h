@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
+#include "Wall.h"
 
 
 class Tilemap {
@@ -22,8 +23,9 @@ public:
 private:
 
 	SDL_Texture* MapTex;
-	SDL_Texture* WallTex;
 	SDL_Renderer * renderer;
 	SDL_Rect position;
+	Wall * wall;
+	
 	
 };
