@@ -11,6 +11,7 @@ public:
 
 	Wall(SDL_Renderer*);
 
+	void counter();
 	void init();
 	void processInput(SDL_Event e);
 	void update();
@@ -19,7 +20,7 @@ public:
 
 
 
-
+	int wallarray[16];
 	
 
 

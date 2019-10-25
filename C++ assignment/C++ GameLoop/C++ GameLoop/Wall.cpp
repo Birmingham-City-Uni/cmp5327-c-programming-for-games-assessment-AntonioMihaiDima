@@ -10,9 +10,9 @@ Wall::Wall(SDL_Renderer * renderer)
 	
 }
 
-int wallarray[16];
 
-void Counter()
+
+void Wall::counter()
 {
 
 	for (int i = 0; i < 16; i++)
