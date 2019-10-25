@@ -2,7 +2,7 @@
 #include "pch.h"
 using namespace std;
 
-
+int TypeOfTerrain = 0;
 
 
 Tilemap::Tilemap(SDL_Renderer * renderer)
@@ -16,8 +16,11 @@ Tilemap::Tilemap(SDL_Renderer * renderer)
 void Tilemap::init()
 {
 		SDL_Surface* tmpSurface = IMG_Load("debug/Dirt.jpg");
-		PlayerTex = SDL_CreateTextureFromSurface(this->renderer, tmpSurface);
+		SDL_Surface* brickSurface = IMG_Load("debug/Brick.jpg");
+		MapTex = SDL_CreateTextureFromSurface(this->renderer, tmpSurface);
+		WallTex = SDL_CreateTextureFromSurface(this->renderer, brickSurface);
 		SDL_FreeSurface(tmpSurface);
+		SDL_FreeSurface(brickSurface);
 
 		position.x = 0;
 		position.y = 0;
@@ -46,14 +49,20 @@ void Tilemap::draw()
 		for (int j = 0; j < 19; j++)
 		{
 			SDL_Rect position = { i * 32, j * 32, 32, 32 };
-			SDL_RenderCopy(this->renderer, PlayerTex, NULL, &position);
+			SDL_RenderCopy(this->renderer, MapTex, NULL, &position);
 		}
+	for (int i = 0; i < 2; i++)
+	for (int j = 0; j < 19; j++)
+	{
+		SDL_Rect position = { i * 768, j * 32, 32, 32 };
+		SDL_RenderCopy(this->renderer, WallTex, NULL, &position);
+	}
 	
 }
 
 void Tilemap::clean()
 {
-	SDL_DestroyTexture(this->PlayerTex);
+	SDL_DestroyTexture(this->MapTex);
 }
 
 

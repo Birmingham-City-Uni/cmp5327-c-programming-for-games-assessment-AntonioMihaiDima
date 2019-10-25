@@ -14,7 +14,8 @@ int main(int argc, char* args[])
 	}
 
 	//update and draw the game until quit by the user
-	while (gameLoop->processInput()) {
+	while (gameLoop->processInput()) 
+	{
 		gameLoop->update();
 		gameLoop->draw();
 	}

@@ -21,7 +21,8 @@ public:
 
 private:
 
-	SDL_Texture* PlayerTex;
+	SDL_Texture* MapTex;
+	SDL_Texture* WallTex;
 	SDL_Renderer * renderer;
 	SDL_Rect position;
 	
