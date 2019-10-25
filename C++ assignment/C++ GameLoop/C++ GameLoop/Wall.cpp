@@ -12,13 +12,10 @@ Wall::Wall(SDL_Renderer * renderer)
 
 int wallarray[16];
 
-void Wall::init()
+void Counter()
 {
-	SDL_Surface* brickSurface = IMG_Load("debug/Brick.jpg");
-	WallTex = SDL_CreateTextureFromSurface(this->renderer, brickSurface);
-	SDL_FreeSurface(brickSurface);
-	
-	/*for (int i = 0; i < 16; i++)
+
+	for (int i = 0; i < 16; i++)
 	{
 		wallarray[i] = 50;
 	}
@@ -30,7 +27,15 @@ void Wall::init()
 				i -= 1;
 
 	}
-	*/
+}
+
+void Wall::init()
+{
+	SDL_Surface* brickSurface = IMG_Load("debug/Brick.jpg");
+	WallTex = SDL_CreateTextureFromSurface(this->renderer, brickSurface);
+	SDL_FreeSurface(brickSurface);
+	
+
 	
 }
 
@@ -54,12 +59,12 @@ void Wall::draw()
 		SDL_RenderCopy(this->renderer, WallTex, NULL, &position);
 	}
 
-	/*for (int i = 0; i < 16; i++)
+	for (int i = 0; i < 16; i++)
 	{
 		SDL_Rect randposition = { wallarray[i] * 32, wallarray[i + 1] * 32, 32, 32 };
 		SDL_RenderCopy(this->renderer, WallTex, NULL, &randposition);
 	}
-	*/
+	
 
 }
 
