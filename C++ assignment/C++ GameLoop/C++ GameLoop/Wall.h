@@ -3,6 +3,8 @@
 #include <SDL_image.h>
 
 
+extern int tilearray[16];
+
 class Wall {
 public:
 
@@ -19,14 +21,13 @@ public:
 	void clean();
 
 
+	
 
-	int wallarray[8];
-	bool pickwalls = true;
 	
 
 
 private:
-
+	
 	SDL_Texture* WallTex;
 	SDL_Renderer * renderer;
 	SDL_Rect position;

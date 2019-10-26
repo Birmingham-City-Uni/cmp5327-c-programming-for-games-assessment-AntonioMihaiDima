@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Wall.h"
+#include "Water.h"
 
 
 class Tilemap {
@@ -26,6 +27,7 @@ private:
 	SDL_Renderer * renderer;
 	SDL_Rect position;
 	Wall * wall;
+	Water * water;
 	
 	
 };

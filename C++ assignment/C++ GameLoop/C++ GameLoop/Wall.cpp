@@ -2,8 +2,11 @@
 #include "pch.h"
 #include <stdlib.h>
 #include "time.h"
+#include <iostream>
 using namespace std;
 
+
+int tilearray[16];
 
 Wall::Wall(SDL_Renderer * renderer)
 {
@@ -18,13 +21,14 @@ void Wall::counter()
 
 	srand(time(0));
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 16; i++)
 	{
-		wallarray[i] = 50;
+		tilearray[i] = 50;
 	}
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 16; i++)
 	{
-		wallarray[i] = rand() % 23 + 1;
+		tilearray[i] = rand() % 23 + 1;
+		
 		/*for (int j = 0; j < 10; j++)
 		{
 			if (wallarray[i] == wallarray[j])
@@ -71,7 +75,7 @@ void Wall::draw()
 
 		for (int i = 0; i < 8; i++)
 		{
-			SDL_Rect randposition = { wallarray[i] * 32, wallarray[i + 1] * 32, 32, 32 };
+			SDL_Rect randposition = { tilearray[i] * 32, tilearray[i + 1] * 32, 32, 32 };
 			SDL_RenderCopy(this->renderer, WallTex, NULL, &randposition);
 		}
 	

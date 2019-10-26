@@ -21,8 +21,11 @@ void Tilemap::init()
 		MapTex = SDL_CreateTextureFromSurface(this->renderer, tmpSurface);
 		SDL_FreeSurface(tmpSurface);
 		
+		
 		wall = new Wall(this->renderer);
+		water = new Water(this->renderer);
 		wall->init();
+		water->init();
 
 		position.x = 0;
 		position.y = 0;
@@ -66,6 +69,7 @@ void Tilemap::draw()
 			SDL_RenderCopy(this->renderer, MapTex, NULL, &position);
 		}
 	wall->draw();
+	water->draw();
 	
 }
 
