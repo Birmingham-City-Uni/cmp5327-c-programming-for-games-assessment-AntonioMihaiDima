@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-
+/*
 class Water {
 
 public:
@@ -24,3 +24,5 @@ private:
 	SDL_Rect position;
 
 };
+
+*/

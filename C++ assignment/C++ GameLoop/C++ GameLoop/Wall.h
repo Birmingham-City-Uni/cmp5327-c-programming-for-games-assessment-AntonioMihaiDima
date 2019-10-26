@@ -2,8 +2,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-
-extern int tilearray[16];
+/*
+extern int tilearray[32];
 
 class Wall {
 public:
@@ -28,10 +28,12 @@ public:
 
 private:
 	
-	SDL_Texture* WallTex;
+	
 	SDL_Renderer * renderer;
 	SDL_Rect position;
 	
 	
 
 };
+
+*/

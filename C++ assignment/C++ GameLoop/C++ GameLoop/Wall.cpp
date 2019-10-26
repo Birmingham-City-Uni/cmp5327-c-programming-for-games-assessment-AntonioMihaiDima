@@ -5,8 +5,8 @@
 #include <iostream>
 using namespace std;
 
-
-int tilearray[16];
+/*
+int tilearray[32];
 
 Wall::Wall(SDL_Renderer * renderer)
 {
@@ -21,22 +21,14 @@ void Wall::counter()
 
 	srand(time(0));
 
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < 32; i++)
 	{
 		tilearray[i] = 50;
 	}
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < 32; i++)
 	{
 		tilearray[i] = rand() % 23 + 1;
 		
-		/*for (int j = 0; j < 10; j++)
-		{
-			if (wallarray[i] == wallarray[j])
-
-				i = i - 1;
-			break;
-		}
-		*/
 				
 
 	}
@@ -44,9 +36,7 @@ void Wall::counter()
 
 void Wall::init()
 {
-	SDL_Surface* brickSurface = IMG_Load("debug/Brick.jpg");
-	WallTex = SDL_CreateTextureFromSurface(this->renderer, brickSurface);
-	SDL_FreeSurface(brickSurface);
+	
 	
 
 	
@@ -73,7 +63,7 @@ void Wall::draw()
 		
 	}
 
-		for (int i = 0; i < 8; i++)
+		for (int i = 16; i < 24; i++)
 		{
 			SDL_Rect randposition = { tilearray[i] * 32, tilearray[i + 1] * 32, 32, 32 };
 			SDL_RenderCopy(this->renderer, WallTex, NULL, &randposition);
@@ -81,4 +71,7 @@ void Wall::draw()
 	
 
 }
+*/
+
+
 
