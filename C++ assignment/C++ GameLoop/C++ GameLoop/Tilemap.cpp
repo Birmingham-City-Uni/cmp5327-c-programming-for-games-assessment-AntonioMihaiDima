@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-int tilearrayvalues[80];
+int tilearrayvalues[64];
 int tilemaparray[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
@@ -55,7 +55,7 @@ void Tilemap::init()
 		srand(time(0));
 
 		//Firstly we set every element of the array to a value which we won't be using
-		for (int i = 0; i < 80; i++)
+		for (int i = 0; i < 64; i++)
 		{
 			tilearrayvalues[i] = 50;
 		}
@@ -67,7 +67,7 @@ void Tilemap::init()
 			tilearrayvalues[i] = rand() % 23 + 1;
 		}
 
-		for (int i = 32; i < 80; i++)
+		for (int i = 32; i < 64; i++)
 		{
 			tilearrayvalues[i] = rand() % 48 + 1;
 		}
@@ -118,7 +118,7 @@ void Tilemap::update()
 void Tilemap::draw()
 {
 	for (int i = 0; i < 25; i++) 
-		for (int j = 0; j < 50; j++)
+		for (int j = 0; j < 25; j++)
 		{
 			//SDL_Rect positions orientations are inversed compared to the array's i and j
 			SDL_Rect position = { j * 32, i * 32, 32, 32 };

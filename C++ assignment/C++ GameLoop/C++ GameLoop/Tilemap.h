@@ -4,7 +4,7 @@
 
 
 
-extern int tilearrayvalues[80]; //An array which stores a random number sequence for positioning
+extern int tilearrayvalues[64]; //An array which stores a random number sequence for positioning
 extern int tilemaparray[50][25]; //Bidimentional array to store the map tiles
 
 
