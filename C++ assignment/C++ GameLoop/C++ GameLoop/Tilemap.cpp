@@ -4,6 +4,7 @@ using namespace std;
 
 int TypeOfTerrain = 0;
 
+bool tilemaptexture = false;
 
 Tilemap::Tilemap(SDL_Renderer * renderer)
 {
@@ -42,7 +43,17 @@ void Tilemap::processInput(SDL_Event e)
 
 void Tilemap::update()
 {
+	/*if (tilemaptexture == false) 
+	{
+		SDL_DestroyTexture(this->MapTex);
+		tilemaptexture = true;
+		SDL_Surface* tmpSurface = IMG_Load("debug/Dirt.jpg");
+		MapTex = SDL_CreateTextureFromSurface(this->renderer, tmpSurface);
+		SDL_FreeSurface(tmpSurface);
+	}
+		*/
 
+	
 }
 
 
