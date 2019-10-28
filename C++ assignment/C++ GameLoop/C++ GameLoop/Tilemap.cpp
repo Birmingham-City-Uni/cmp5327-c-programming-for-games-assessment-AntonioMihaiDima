@@ -5,10 +5,11 @@
 #include <iostream>
 using namespace std;
 
-int tilearrayvalues[64];
+int tilearrayvalues[66];
 int tilemaparray[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
+int bottomnumbers = 25;
 
 
 Tilemap::Tilemap(SDL_Renderer * renderer)
@@ -55,22 +56,33 @@ void Tilemap::init()
 		srand(time(0));
 
 		//Firstly we set every element of the array to a value which we won't be using
-		for (int i = 0; i < 64; i++)
+		for (int i = 0; i < 66; i++)
 		{
-			tilearrayvalues[i] = 50;
+			tilearrayvalues[i] = -50;
 		}
 
 
 		//Secondly we generate random numbers into a range. The tilemap is 25x32 long, the edges are walls (2x32) so we want a 23 range.
-		for (int i = 0; i < 32; i++)
+		for (int i = 8; i < 58; i++)
 		{
 			tilearrayvalues[i] = rand() % 23 + 1;
 		}
 
-		for (int i = 32; i < 64; i++)
+		//Random numbers for the bottom of the screen
+		for (int i = 58; i < 66; i++)
 		{
-			tilearrayvalues[i] = rand() % 48 + 1;
+			tilearrayvalues[i] = 26 + rand() % (41 - 26 + 1);
 		}
+
+		//Random numbers for the top of the screen
+		for (int i = 0; i < 8; i++)
+		{
+			tilearrayvalues[i] = (rand() % 9 + 1) * -1;
+		}
+
+		/*for (int i = 0; i < 66; i++)
+			cout << tilearrayvalues[i] << " ";
+			*/
 
 
 		
@@ -88,6 +100,8 @@ void Tilemap::init()
 
 		//wall->counter();
 	
+
+
 
 }
 
@@ -119,16 +133,19 @@ void Tilemap::draw()
 {
 	for (int i = 0; i < 25; i++) 
 		for (int j = 0; j < 25; j++)
+
+			//array[i][j]
+
 		{
 			//SDL_Rect positions orientations are inversed compared to the array's i and j
 			SDL_Rect position = { j * 32, i * 32, 32, 32 };
 
 			//Set tiles on the map based on the random numbers from the array
-			for (int i = 0; i < 8; i++)
+			for (int i = 8; i < 16; i++)
 			{
 				tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 1;
 			}
-			for (int i = 8; i < 16; i++)
+			for (int i = 16; i < 24; i++)
 			{
 				tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 2;
 			}
@@ -152,28 +169,72 @@ void Tilemap::draw()
 
 			//This loop is just to test if we constructed the tilemap right
 			//We use the checkmap boolean to make sure that the loop runs only once
-			if (checkmap == true)
-			{
-				for (int i = 0; i < 50; i++)
-				{
-					for (int j = 0; j < 25; j++)
-					{
-						if (j < 24)
-							cout << tilemaparray[i][j] << " ";
-						if (j == 24)
-							cout << tilemaparray[i][j] << endl;
-					}
-
-				}
-				checkmap = false;
-			}
+			
+			
 		}
-	/*for (int i = 25; i < 50; i++)
-		for (int j = 0; j < 25; j++)
+
+	for (int i = 0; i < 25; i++)
+		for (int j = 25; j < 40; j++)
 		{
 			SDL_Rect secondposition = { j * 32, i * 32, 32, 32 };
+			
+			//if (checkmap == true)
+			{
+				for (int a = 25; a < 29; a++)
+				{
+					int b = 58;
+					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
+					b++;
+
+					//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
+				}
+
+				//checkmap = false;
+			}
+				
+			
+				
+			
+				for (int a = 29; a < 33; a++)
+				{
+					int b = 62;
+					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
+					b++;
+				}
+
+			
+
+
+			if (tilemaparray[i][j] == 0)
+				SDL_RenderCopy(this->renderer, MapTex, NULL, &secondposition);
+			if (tilemaparray[i][j] == 1)
+				SDL_RenderCopy(this->renderer, WallTex, NULL, &secondposition);
+			if (tilemaparray[i][j] == 2)
+				SDL_RenderCopy(this->renderer, WaterTex, NULL, &secondposition);
+
 		}
-		*/
+
+
+
+
+	if (checkmap == true)
+	{
+		for (int i = 0; i < 50; i++)
+		{
+			for (int j = 0; j < 25; j++)
+			{
+				if (j < 24)
+					cout << tilemaparray[i][j] << " ";
+				if (j == 24)
+					cout << tilemaparray[i][j] << endl;
+			}
+
+		}
+		checkmap = false;
+
+
+	}
+
 	
 }
 

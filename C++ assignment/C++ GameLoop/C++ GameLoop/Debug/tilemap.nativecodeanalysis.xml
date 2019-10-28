@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>tilemap.cpp</FILENAME>
+      <LINE>14</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Tilemap::position' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Tilemap::{ctor}</FUNCTION>
+    <DECORATED>??0Tilemap@@QAE@PAUSDL_Renderer@@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>tilemap.cpp</FILENAME>
+      <LINE>14</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Tilemap::MapTex' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Tilemap::{ctor}</FUNCTION>
+    <DECORATED>??0Tilemap@@QAE@PAUSDL_Renderer@@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>tilemap.cpp</FILENAME>
+      <LINE>14</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Tilemap::WallTex' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Tilemap::{ctor}</FUNCTION>
+    <DECORATED>??0Tilemap@@QAE@PAUSDL_Renderer@@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>tilemap.cpp</FILENAME>
+      <LINE>14</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Tilemap::WaterTex' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Tilemap::{ctor}</FUNCTION>
+    <DECORATED>??0Tilemap@@QAE@PAUSDL_Renderer@@@Z</DECORATED>
+    <FUNCLINE>14</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
