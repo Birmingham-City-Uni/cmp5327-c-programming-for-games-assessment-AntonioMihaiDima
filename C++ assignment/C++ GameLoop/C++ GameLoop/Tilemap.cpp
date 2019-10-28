@@ -9,7 +9,7 @@ int tilearrayvalues[66];
 int tilemaparray[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
-int bottomnumbers = 25;
+bool numberspicked = false;
 
 
 Tilemap::Tilemap(SDL_Renderer * renderer)
@@ -52,6 +52,8 @@ void Tilemap::init()
 
 
 
+
+
 		//We want to randomise the values for the random number array
 		srand(time(0));
 
@@ -60,7 +62,6 @@ void Tilemap::init()
 		{
 			tilearrayvalues[i] = -50;
 		}
-
 
 		//Secondly we generate random numbers into a range. The tilemap is 25x32 long, the edges are walls (2x32) so we want a 23 range.
 		for (int i = 8; i < 58; i++)
@@ -79,6 +80,9 @@ void Tilemap::init()
 		{
 			tilearrayvalues[i] = (rand() % 9 + 1) * -1;
 		}
+
+
+		
 
 		/*for (int i = 0; i < 66; i++)
 			cout << tilearrayvalues[i] << " ";
@@ -114,6 +118,14 @@ void Tilemap::processInput(SDL_Event e)
 
 void Tilemap::update()
 {
+	
+	
+
+
+
+	
+
+
 	//Code to destroy the textures that we won't be needing
 	/*if (tilemaptexture == false) 
 	{
@@ -180,9 +192,10 @@ void Tilemap::draw()
 			
 			//if (checkmap == true)
 			{
+				int b = 58;
 				for (int a = 25; a < 29; a++)
 				{
-					int b = 58;
+					
 					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
 					b++;
 
@@ -194,10 +207,10 @@ void Tilemap::draw()
 				
 			
 				
-			
+			int b = 62;
 				for (int a = 29; a < 33; a++)
 				{
-					int b = 62;
+					
 					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
 					b++;
 				}
