@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-int tilearrayvalues[66];
+int tilearrayvalues[48];
 int tilemaparray[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
@@ -58,27 +58,27 @@ void Tilemap::init()
 		srand(time(0));
 
 		//Firstly we set every element of the array to a value which we won't be using
-		for (int i = 0; i < 66; i++)
+		for (int i = 0; i < 48; i++)
 		{
 			tilearrayvalues[i] = -50;
 		}
 
 		//Secondly we generate random numbers into a range. The tilemap is 25x32 long, the edges are walls (2x32) so we want a 23 range.
-		for (int i = 8; i < 58; i++)
+		for (int i = 8; i < 40; i++)
 		{
 			tilearrayvalues[i] = rand() % 23 + 1;
 		}
 
 		//Random numbers for the bottom of the screen
-		for (int i = 58; i < 66; i++)
+		for (int i = 40; i < 48; i++)
 		{
-			tilearrayvalues[i] = 26 + rand() % (41 - 26 + 1);
+			tilearrayvalues[i] = 26 + (rand() % 16);
 		}
 
 		//Random numbers for the top of the screen
 		for (int i = 0; i < 8; i++)
 		{
-			tilearrayvalues[i] = (rand() % 9 + 1) * -1;
+			tilearrayvalues[i] = 44 + (rand() % 5);
 		}
 
 
@@ -192,8 +192,8 @@ void Tilemap::draw()
 			
 			//if (checkmap == true)
 			{
-				int b = 58;
-				for (int a = 25; a < 29; a++)
+				int b = 40;
+				for (int a = 24; a < 28; a++)
 				{
 					
 					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
@@ -207,8 +207,8 @@ void Tilemap::draw()
 				
 			
 				
-			int b = 62;
-				for (int a = 29; a < 33; a++)
+			int b = 44;
+				for (int a = 28; a < 32; a++)
 				{
 					
 					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
@@ -226,6 +226,38 @@ void Tilemap::draw()
 				SDL_RenderCopy(this->renderer, WaterTex, NULL, &secondposition);
 
 		}
+
+			for (int i = 0; i < 25; i++)
+				for (int j = 0; j < 8; j++)
+				{
+					SDL_Rect thirdposition = { -1 * j * 32, i * 32, 32, 32 };
+					{
+						int c = 0;
+						for (int d = 32; d < 36; d++)
+						{
+							tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 1;
+							c++;
+						}
+					}
+
+					{
+						int c = 4;
+						for (int d = 36; d < 40; d++)
+						{
+							tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 2;
+							c++;
+						}
+					}
+
+
+					if (tilemaparray[i][j] == 0)
+						SDL_RenderCopy(this->renderer, MapTex, NULL, &thirdposition);
+					if (tilemaparray[i][j] == 1)
+						SDL_RenderCopy(this->renderer, WallTex, NULL, &thirdposition);
+					if (tilemaparray[i][j] == 2)
+						SDL_RenderCopy(this->renderer, WaterTex, NULL, &thirdposition);
+
+				}
 
 
 
