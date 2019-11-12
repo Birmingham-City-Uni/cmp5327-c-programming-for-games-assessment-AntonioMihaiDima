@@ -8,6 +8,11 @@ GameLoop::GameLoop()
 
 bool GameLoop::init()
 {
+	for (int i = 0; i < 256; i++)
+	{
+		keydown[i] = false;
+	}
+
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		std::cerr << "Could not initialise SDL: " << SDL_GetError();
 		return false;
@@ -44,6 +49,16 @@ bool GameLoop::processInput()
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) {
 			return false;
+		}
+		if (e.type == SDL_KEYDOWN)
+		{
+			if (e.key.keysym.scancode < 512)
+				keydown[e.key.keysym.scancode] = true;
+		}
+		if (e.type == SDL_KEYUP)
+		{
+			if (e.key.keysym.scancode < 512)
+				keydown[e.key.keysym.scancode] = false;
 		}
 
 		//process any input for game classes here

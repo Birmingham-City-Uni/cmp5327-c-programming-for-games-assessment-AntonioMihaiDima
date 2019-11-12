@@ -5,6 +5,7 @@
 //this can be accessed in any cpp file by adding "extern GameLoop * gameLoop"
 GameLoop * gameLoop;
 
+
 int main(int argc, char* args[])
 {
 	//construct a new gameloop object

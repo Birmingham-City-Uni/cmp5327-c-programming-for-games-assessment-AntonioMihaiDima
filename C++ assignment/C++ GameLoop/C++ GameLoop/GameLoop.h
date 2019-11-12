@@ -6,7 +6,7 @@
 
 using namespace std;
 
-
+class Tilemap;
 
 class GameLoop {
 
@@ -23,12 +23,22 @@ public:
 
 	void clean();
 
+	bool getKeyDown(int keyCode)
+	{
+		if (keyCode > 0 && keyCode < 512)
+		{
+			return this->keydown[keyCode];
+		}
+		return false;
+	}
+
 
 private:
 	SDL_Window* window;
 	SDL_Renderer * renderer;
 
 	Tilemap * tilemap;
+	bool keydown[256];
 
 };
 

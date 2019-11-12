@@ -5,11 +5,17 @@
 #include <iostream>
 using namespace std;
 
+
+extern GameLoop * gameLoop;
 int tilearrayvalues[48];
 int tilemaparray[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
 bool numberspicked = false;
+bool randomtilesassigned = false;
+int DownwardsMovementValue = 0;
+bool MovingUp = false;
+
 
 
 Tilemap::Tilemap(SDL_Renderer * renderer)
@@ -17,6 +23,8 @@ Tilemap::Tilemap(SDL_Renderer * renderer)
 	this -> renderer = renderer;
 	
 }
+
+
 
 
 
@@ -113,13 +121,78 @@ void Tilemap::init()
 void Tilemap::processInput(SDL_Event e)
 {
 
+
 }
 
 
 void Tilemap::update()
 {
+
+	if (gameLoop->getKeyDown(SDL_SCANCODE_W))
+	{
+		DownwardsMovementValue += 2;
+	}
 	
-	
+
+	if (randomtilesassigned == false)
+	{
+		//Set tiles on the map based on the random numbers from the array
+		for (int i = 8; i < 16; i++)
+		{
+			tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 1;
+		}
+		for (int i = 16; i < 24; i++)
+		{
+			tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 2;
+		}
+
+		{
+			int b = 40;
+			for (int a = 24; a < 28; a++)
+			{
+
+				tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
+				b++;
+
+				//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
+			}
+
+			//checkmap = false;
+		}
+
+
+
+		int b = 44;
+		for (int a = 28; a < 32; a++)
+		{
+
+			tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
+			b++;
+		}
+
+		{
+			int c = 0;
+			for (int d = 32; d < 36; d++)
+			{
+				tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 1;
+				c++;
+			}
+		}
+
+		{
+			int c = 4;
+			for (int d = 36; d < 40; d++)
+			{
+				tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 2;
+				c++;
+			}
+		}
+
+		randomtilesassigned = true;
+	}
+
+
+
 
 
 
@@ -146,30 +219,10 @@ void Tilemap::draw()
 	for (int i = 0; i < 25; i++) 
 		for (int j = 0; j < 25; j++)
 
-			//array[i][j]
-
 		{
 			//SDL_Rect positions orientations are inversed compared to the array's i and j
-			SDL_Rect position = { j * 32, i * 32, 32, 32 };
+			SDL_Rect position = { j * 32, i * 32 + DownwardsMovementValue, 32, 32 };
 
-			//Set tiles on the map based on the random numbers from the array
-			for (int i = 8; i < 16; i++)
-			{
-				tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 1;
-			}
-			for (int i = 16; i < 24; i++)
-			{
-				tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 2;
-			}
-			/*for (int i = 16; i < 24; i++)
-			{
-				tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 1;
-			}
-			for (int i = 24; i < 32; i++)
-			{
-				tilemaparray[tilearrayvalues[i]][tilearrayvalues[i + 1]] = 2;
-			}
-			*/
 
 			//Here we just render the tilemap depending on the array's values
 			if (tilemaparray[i][j] == 0)
@@ -185,35 +238,11 @@ void Tilemap::draw()
 			
 		}
 
-	for (int i = 0; i < 25; i++)
-		for (int j = 25; j < 40; j++)
+	for (int i = 25; i < 40; i++)
+		for (int j = 0; j < 25; j++)
 		{
-			SDL_Rect secondposition = { j * 32, i * 32, 32, 32 };
+			SDL_Rect secondposition = { j * 32, i * 32 + DownwardsMovementValue, 32, 32 };
 			
-			//if (checkmap == true)
-			{
-				int b = 40;
-				for (int a = 24; a < 28; a++)
-				{
-					
-					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
-					b++;
-
-					//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
-				}
-
-				//checkmap = false;
-			}
-				
-			
-				
-			int b = 44;
-				for (int a = 28; a < 32; a++)
-				{
-					
-					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
-					b++;
-				}
 
 			
 
@@ -227,27 +256,12 @@ void Tilemap::draw()
 
 		}
 
-			for (int i = 0; i < 25; i++)
-				for (int j = 0; j < 8; j++)
+			for (int i = 1; i < 11; i++)
+				for (int j = 0; j < 25; j++)
 				{
-					SDL_Rect thirdposition = { -1 * j * 32, i * 32, 32, 32 };
-					{
-						int c = 0;
-						for (int d = 32; d < 36; d++)
-						{
-							tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 1;
-							c++;
-						}
-					}
-
-					{
-						int c = 4;
-						for (int d = 36; d < 40; d++)
-						{
-							tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 2;
-							c++;
-						}
-					}
+					//j should stay positive to render sprites in the same 25 tiles horizontal range.
+					SDL_Rect thirdposition = {j * 32, -1 * i * 32 + DownwardsMovementValue, 32, 32 };
+					
 
 
 					if (tilemaparray[i][j] == 0)
@@ -288,21 +302,3 @@ void Tilemap::clean()
 	SDL_DestroyTexture(this->MapTex);
 }
 
-
-/*void Player::Init()
-{
-	SDL_Surface * surface = IMG_Load("Dirt.jpg");
-	this->texture = SDL_CreateTextureFromSurface(this->renderer, surface);
-	SDL_FreeSurface(surface);
-}
-
-
-void Player::processInput(SDL_Event e)
-{
-
-}
-
-void Player::Update()
-{
-
-}*/

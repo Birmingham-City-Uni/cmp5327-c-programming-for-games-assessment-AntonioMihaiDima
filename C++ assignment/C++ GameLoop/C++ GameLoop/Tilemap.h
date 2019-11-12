@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
+#include "GameLoop.h"
 
 
 
@@ -34,6 +35,8 @@ private:
 	SDL_Rect position;
 	SDL_Rect secondposition;
 	SDL_Rect thirdposition;
+	const Uint8 * keystate = SDL_GetKeyboardState(NULL);
 	
 	
 };
+
