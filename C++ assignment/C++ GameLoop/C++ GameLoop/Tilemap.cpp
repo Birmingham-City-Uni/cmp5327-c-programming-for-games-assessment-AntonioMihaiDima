@@ -9,12 +9,18 @@ using namespace std;
 extern GameLoop * gameLoop;
 int tilearrayvalues[48];
 int tilemaparray[50][25];
+int tilemaparraymodified[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
 bool numberspicked = false;
 bool randomtilesassigned = false;
 int DownwardsMovementValue = 0;
 bool MovingUp = false;
+bool TilesToBeChanged = false;
+int tileschangebottom = 40;
+int mainwindowcounter = 0;
+int toprenderingvalue = 1;
+int tileschangetop = 40;
 
 
 
@@ -191,26 +197,56 @@ void Tilemap::update()
 		randomtilesassigned = true;
 	}
 
-
-
-
-
-
-	
-
-
-	//Code to destroy the textures that we won't be needing
-	/*if (tilemaptexture == false) 
+	if (DownwardsMovementValue >= 32)
 	{
-		SDL_DestroyTexture(this->MapTex);
-		tilemaptexture = true;
-		SDL_Surface* tmpSurface = IMG_Load("debug/Dirt.jpg");
-		MapTex = SDL_CreateTextureFromSurface(this->renderer, tmpSurface);
-		SDL_FreeSurface(tmpSurface);
+		DownwardsMovementValue = 0;
+		TilesToBeChanged = true;
 	}
-		*/
 
-	
+	if (TilesToBeChanged == true)
+	{
+				for (int j = 0; j < 25; j++)
+		{
+			tilemaparraymodified[0][j] = tilemaparray[41][j];
+
+		}
+				//here we move the top of the tiles onto the screen view
+				for (int i = 0; i < 10; i++)
+				{
+					for (int j = 0; j < 25; j++)
+					{
+						tilemaparraymodified[i][j] = tilemaparray[tileschangetop][j];
+					}
+					tileschangetop++;
+				}
+				if (tileschangetop == 50)
+					tileschangetop = 40;
+
+		for (int i = 50; i > 40; i--)
+		{
+			
+			for (int j = 0; j < 25; j++)
+			{
+				tilemaparraymodified[i][j] = tilemaparray[tileschangetop][j];
+
+			}
+		}
+
+		if (tileschangetop == 10)
+			tileschangetop = 0;
+
+		
+				
+			
+
+		for (int i = 0; i < 50; i++)
+			for (int j = 0; j < 25; j++)
+				tilemaparray[i][j] = tilemaparraymodified[i][j];
+
+		TilesToBeChanged = false;
+
+	}
+
 }
 
 
@@ -256,22 +292,30 @@ void Tilemap::draw()
 
 		}
 
-			for (int i = 1; i < 11; i++)
-				for (int j = 0; j < 25; j++)
-				{
-					//j should stay positive to render sprites in the same 25 tiles horizontal range.
-					SDL_Rect thirdposition = {j * 32, -1 * i * 32 + DownwardsMovementValue, 32, 32 };
-					
+	for (int i = 40; i < 50; i++)
+	{
+		
+
+		for (int j = 0; j < 25; j++)
+		{
+
+			//j should stay positive to render sprites in the same 25 tiles horizontal range.
+			SDL_Rect thirdposition = { j * 32, -1 * toprenderingvalue * 32 + DownwardsMovementValue, 32, 32 };
 
 
-					if (tilemaparray[i][j] == 0)
-						SDL_RenderCopy(this->renderer, MapTex, NULL, &thirdposition);
-					if (tilemaparray[i][j] == 1)
-						SDL_RenderCopy(this->renderer, WallTex, NULL, &thirdposition);
-					if (tilemaparray[i][j] == 2)
-						SDL_RenderCopy(this->renderer, WaterTex, NULL, &thirdposition);
 
-				}
+			if (tilemaparray[i][j] == 0)
+				SDL_RenderCopy(this->renderer, MapTex, NULL, &thirdposition);
+			if (tilemaparray[i][j] == 1)
+				SDL_RenderCopy(this->renderer, WallTex, NULL, &thirdposition);
+			if (tilemaparray[i][j] == 2)
+				SDL_RenderCopy(this->renderer, WaterTex, NULL, &thirdposition);
+			
+		}
+		toprenderingvalue++;
+	}
+	if (toprenderingvalue == 11)
+		toprenderingvalue = 1;
 
 
 

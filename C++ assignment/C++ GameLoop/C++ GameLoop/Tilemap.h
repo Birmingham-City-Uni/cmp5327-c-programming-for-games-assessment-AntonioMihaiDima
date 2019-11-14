@@ -6,6 +6,7 @@
 
 
 extern int tilearrayvalues[48]; //An array which stores a random number sequence for positioning
+extern int tilemaparraymodified[50][25]; //Use this array to switch the values based on the tiles scrolling
 extern int tilemaparray[50][25]; //Bidimentional array to store the map tiles
 
 
@@ -35,7 +36,6 @@ private:
 	SDL_Rect position;
 	SDL_Rect secondposition;
 	SDL_Rect thirdposition;
-	const Uint8 * keystate = SDL_GetKeyboardState(NULL);
 	
 	
 };
