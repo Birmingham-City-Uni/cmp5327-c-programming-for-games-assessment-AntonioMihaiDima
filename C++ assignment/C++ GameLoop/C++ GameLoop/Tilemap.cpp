@@ -205,38 +205,23 @@ void Tilemap::update()
 
 	if (TilesToBeChanged == true)
 	{
-				for (int j = 0; j < 25; j++)
-		{
-			tilemaparraymodified[0][j] = tilemaparray[41][j];
 
-		}
 				//here we move the top of the tiles onto the screen view
-				for (int i = 0; i < 10; i++)
+				for (int i = 0; i < 50; i++)
 				{
 					for (int j = 0; j < 25; j++)
 					{
-						tilemaparraymodified[i][j] = tilemaparray[tileschangetop][j];
+						tilemaparraymodified[i+1][j] = tilemaparray[i][j];
 					}
-					tileschangetop++;
 				}
-				if (tileschangetop == 50)
-					tileschangetop = 40;
 
-		for (int i = 50; i > 40; i--)
-		{
-			
-			for (int j = 0; j < 25; j++)
-			{
-				tilemaparraymodified[i][j] = tilemaparray[tileschangetop][j];
-
-			}
-		}
-
-		if (tileschangetop == 10)
-			tileschangetop = 0;
 
 		
-				
+				for (int j = 0; j < 25; j++)
+				{
+					tilemaparraymodified[0][j] = tilemaparray[49][j];
+
+				}
 			
 
 		for (int i = 0; i < 50; i++)
@@ -292,7 +277,7 @@ void Tilemap::draw()
 
 		}
 
-	for (int i = 40; i < 50; i++)
+	for (int i = 49; i > 39; i--)
 	{
 		
 
