@@ -17,10 +17,10 @@ bool randomtilesassigned = false;
 int DownwardsMovementValue = 0;
 bool MovingUp = false;
 bool TilesToBeChanged = false;
-int tileschangebottom = 40;
 int mainwindowcounter = 0;
 int toprenderingvalue = 1;
-int tileschangetop = 40;
+bool halfpicker = true;
+
 
 
 
@@ -229,7 +229,149 @@ void Tilemap::update()
 				tilemaparray[i][j] = tilemaparraymodified[i][j];
 
 		TilesToBeChanged = false;
+		mainwindowcounter++;
 
+	}
+
+	if (mainwindowcounter == 25)
+	{
+		if (halfpicker == true)
+		{
+			for (int i = 25; i < 50; i++)
+				for (int j = 1; j < 24; j++)
+				{
+					tilemaparray[i][j] = 0;
+				}
+
+
+			for (int i = 24; i < 40; i++)
+			{
+				tilearrayvalues[i] = rand() % 23 + 1;
+			}
+			for (int i = 40; i < 48; i++)
+			{
+				tilearrayvalues[i] = 26 + (rand() % 16);
+			}
+			for (int i = 0; i < 8; i++)
+			{
+				tilearrayvalues[i] = 44 + (rand() % 5);
+			}
+
+
+
+			{
+				int b = 40;
+				for (int a = 24; a < 28; a++)
+				{
+
+					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
+					b++;
+
+					//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
+				}
+
+				//checkmap = false;
+			}
+
+
+
+			int b = 44;
+			for (int a = 28; a < 32; a++)
+			{
+
+				tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
+				b++;
+			}
+
+			{
+				int c = 0;
+				for (int d = 32; d < 36; d++)
+				{
+					tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 1;
+					c++;
+				}
+			}
+
+			{
+				int c = 4;
+				for (int d = 36; d < 40; d++)
+				{
+					tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 2;
+					c++;
+				}
+			}
+		}
+
+		if (halfpicker == false)
+		{
+			for (int i = 25; i < 50; i++)
+				for (int j = 1; j < 24; j++)
+				{
+					tilemaparray[i][j] = 0;
+				}
+
+
+			for (int i = 24; i < 40; i++)
+			{
+				tilearrayvalues[i] = rand() % 23 + 1;
+			}
+			for (int i = 40; i < 48; i++)
+			{
+				tilearrayvalues[i] = 26 + (rand() % 16);
+			}
+			for (int i = 0; i < 8; i++)
+			{
+				tilearrayvalues[i] = 44 + (rand() % 5);
+			}
+
+
+
+			{
+				int b = 40;
+				for (int a = 24; a < 28; a++)
+				{
+
+					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
+					b++;
+
+					//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
+				}
+
+				//checkmap = false;
+			}
+
+
+
+			int b = 44;
+			for (int a = 28; a < 32; a++)
+			{
+
+				tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 2;
+				b++;
+			}
+
+			{
+				int c = 0;
+				for (int d = 32; d < 36; d++)
+				{
+					tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 1;
+					c++;
+				}
+			}
+
+			{
+				int c = 4;
+				for (int d = 36; d < 40; d++)
+				{
+					tilemaparray[tilearrayvalues[c]][tilearrayvalues[d]] = 2;
+					c++;
+				}
+			}
+		}
+
+
+		mainwindowcounter = 0;
+		halfpicker = !halfpicker;
 	}
 
 }
