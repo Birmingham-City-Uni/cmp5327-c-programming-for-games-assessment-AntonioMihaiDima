@@ -3,8 +3,11 @@
 #include <SDL.h>
 #include <iostream>
 #include "Tilemap.h"
+#include "Player.h"
 
 using namespace std;
+
+class Player;
 
 class Tilemap;
 
@@ -37,6 +40,7 @@ private:
 	SDL_Window* window;
 	SDL_Renderer * renderer;
 
+	Player * player;
 	Tilemap * tilemap;
 	bool keydown[256];
 

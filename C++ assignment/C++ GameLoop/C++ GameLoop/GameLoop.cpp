@@ -38,8 +38,10 @@ bool GameLoop::init()
 
 	//process initialisation for game classes here
 
+	player = new Player(this->renderer);
 	tilemap = new Tilemap(this->renderer);
 	tilemap->init();
+	player->init();
 
 }
 
@@ -64,6 +66,7 @@ bool GameLoop::processInput()
 		//process any input for game classes here
 
 		tilemap->processInput(e);
+		player->processInput(e);
 	}
 
 	return true;
@@ -73,7 +76,9 @@ void GameLoop::update()
 {
 	//process updating for game classes here
 
+	
 	tilemap->update();
+	player->update();
 
 }
 
@@ -84,6 +89,7 @@ void GameLoop::draw()
 	//process drawing for game classes here
 
 	tilemap->draw();
+	player->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);
@@ -93,6 +99,12 @@ void GameLoop::clean()
 {
 	//process clean up for game classes here
 	tilemap->clean();
+	player->clean();
+	if (player)
+	{
+		delete player;
+		player = nullptr;
+	}
 	if (tilemap)
 	{
 		delete tilemap;

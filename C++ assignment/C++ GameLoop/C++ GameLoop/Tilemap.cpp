@@ -20,6 +20,7 @@ bool TilesToBeChanged = false;
 int mainwindowcounter = 0;
 int toprenderingvalue = 1;
 bool halfpicker = true;
+bool WaveComplete = false;
 
 
 
@@ -133,7 +134,7 @@ void Tilemap::processInput(SDL_Event e)
 
 void Tilemap::update()
 {
-
+	if (WaveComplete == true)
 	if (gameLoop->getKeyDown(SDL_SCANCODE_W))
 	{
 		DownwardsMovementValue += 2;
