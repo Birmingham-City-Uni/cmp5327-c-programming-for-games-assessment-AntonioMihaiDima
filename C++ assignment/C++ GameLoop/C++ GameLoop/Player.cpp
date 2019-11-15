@@ -1,9 +1,10 @@
 #include "Player.h"
+#include "GameLoop.h"
 
 extern GameLoop * gameLoop;
 
-int xpos = 768;
-int ypos = 384;
+
+
 Player::Player(SDL_Renderer* renderer)
 {
 	this->renderer = renderer;

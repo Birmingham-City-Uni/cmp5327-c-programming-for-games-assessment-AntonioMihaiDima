@@ -1,7 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
-#include "GameLoop.h"
+
+
 
 class Player {
 public:
@@ -13,10 +14,19 @@ public:
 	void draw();
 	void clean();
 
+	float getxpos()
+	{
+		return xpos;
+	}
+	float getypos()
+	{
+		return ypos;
+	}
 
-private:
+protected:
 
-
+	float xpos = 768;
+	float ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
 	SDL_Renderer *renderer;

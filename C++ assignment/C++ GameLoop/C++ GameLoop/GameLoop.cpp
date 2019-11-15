@@ -42,6 +42,8 @@ bool GameLoop::init()
 	tilemap = new Tilemap(this->renderer);
 	tilemap->init();
 	player->init();
+	bm = new BulletManager(this->renderer, this->player);
+	bm->init();
 
 }
 
@@ -67,6 +69,7 @@ bool GameLoop::processInput()
 
 		tilemap->processInput(e);
 		player->processInput(e);
+		bm->processInput(keydown);
 	}
 
 	return true;
@@ -79,6 +82,7 @@ void GameLoop::update()
 	
 	tilemap->update();
 	player->update();
+	bm->update();
 
 }
 
@@ -90,6 +94,7 @@ void GameLoop::draw()
 
 	tilemap->draw();
 	player->draw();
+	bm->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);
@@ -100,6 +105,7 @@ void GameLoop::clean()
 	//process clean up for game classes here
 	tilemap->clean();
 	player->clean();
+	bm->clean();
 	if (player)
 	{
 		delete player;

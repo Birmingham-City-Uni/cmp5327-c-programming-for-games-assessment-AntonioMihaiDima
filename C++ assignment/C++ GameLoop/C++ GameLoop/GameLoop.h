@@ -4,8 +4,11 @@
 #include <iostream>
 #include "Tilemap.h"
 #include "Player.h"
+#include "BulletManager.h"
 
 using namespace std;
+
+class Bullet;
 
 class Player;
 
@@ -37,6 +40,7 @@ public:
 
 
 private:
+	BulletManager * bm;
 	SDL_Window* window;
 	SDL_Renderer * renderer;
 
