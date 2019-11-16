@@ -1,9 +1,15 @@
 #include "Player.h"
-#include "GameLoop.h"
-
-extern GameLoop * gameLoop;
 
 
+
+bool upmovement = false;
+bool downmovement = false;
+bool leftmovement = false;
+bool rightmovement = false;
+bool upperleft = false;
+bool upperright = false;
+bool bottomleft = false;
+bool bottomright = false;
 
 Player::Player(SDL_Renderer* renderer)
 {
@@ -21,32 +27,93 @@ void Player::init()
 
 void Player::processInput(SDL_Event e)
 {
+	if (e.type == SDL_KEYDOWN)
+	{
+		if (e.key.keysym.sym == SDLK_w)
+		{
+			upmovement = true;
+		}
+		if (e.key.keysym.sym == SDLK_s)
+		{
+			downmovement = true;
+		}
+		if (e.key.keysym.sym == SDLK_a)
+		{
+			leftmovement = true;
+		}
+		if (e.key.keysym.sym == SDLK_d)
+		{
+			rightmovement = true;
+		}
+	}
+	if (e.type == SDL_KEYUP)
+	{
+		if (e.key.keysym.sym == SDLK_w)
+		{
+			upmovement = false;
+		}
+		if (e.key.keysym.sym == SDLK_s)
+		{
+			downmovement = false;
+		}
+		if (e.key.keysym.sym == SDLK_a)
+		{
+			leftmovement = false;
+		}
+		if (e.key.keysym.sym == SDLK_d)
+		{
+			rightmovement = false;
+		}
+	}
 
 }
 
 void Player::update()
 {
-	if (gameLoop->getKeyDown(SDL_SCANCODE_W))
+	
+	if (upmovement == true)
 	{
 		xpos -= 2;
 		angle = 0;
 	}
-	if (gameLoop->getKeyDown(SDL_SCANCODE_S))
+	if (downmovement == true)
 	{
 		xpos += 2;
 		angle = 180;
 	}
-	if (gameLoop->getKeyDown(SDL_SCANCODE_A))
+	if (leftmovement == true)
 	{
 		ypos -= 2;
 		angle = 270;
 	}
-	if (gameLoop->getKeyDown(SDL_SCANCODE_D))
+	if (rightmovement == true)
 	{
 		ypos += 2;
 		angle = 90;
 	}
-	if ((gameLoop->getKeyDown(SDL_SCANCODE_W)) && (gameLoop->getKeyDown(SDL_SCANCODE_A)))
+
+	if ((upmovement == true) && (leftmovement == true))
+	{
+		angle = 315;
+	}
+
+	if ((upmovement == true) && (rightmovement == true))
+	{
+		angle = 45;
+	}
+
+	if ((downmovement == true) && (leftmovement == true))
+	{
+		angle = 225;
+	}
+
+	if ((downmovement == true) && (rightmovement == true))
+	{
+		angle = 135;
+	}
+
+
+	/*if ((gameLoop->getKeyDown(SDL_SCANCODE_W)) && (gameLoop->getKeyDown(SDL_SCANCODE_A)))
 	{
 		angle = 315;
 	}
@@ -62,6 +129,7 @@ void Player::update()
 	{
 		angle = 135;
 	}
+	*/
 
 }
 

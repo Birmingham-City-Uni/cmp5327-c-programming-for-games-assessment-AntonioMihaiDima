@@ -5,11 +5,6 @@
 #include <iostream>
 using namespace std;
 
-
-extern GameLoop * gameLoop;
-int tilearrayvalues[48];
-int tilemaparray[50][25];
-int tilemaparraymodified[50][25];
 bool checkmap = true;
 int secondaryposition = 25;
 bool numberspicked = false;
@@ -21,6 +16,7 @@ int mainwindowcounter = 0;
 int toprenderingvalue = 1;
 bool halfpicker = true;
 bool WaveComplete = false;
+bool isMoving = false;
 
 
 
@@ -127,6 +123,20 @@ void Tilemap::init()
 
 void Tilemap::processInput(SDL_Event e)
 {
+	if (WaveComplete == true)
+	{
+		if (e.type == SDL_KEYDOWN)
+			if (e.key.keysym.sym == SDLK_w)
+			{
+				isMoving = true;
+			}
+		if (e.type == SDL_KEYUP)
+			if (e.key.keysym.sym == SDLK_w)
+			{
+				isMoving = false;
+			}
+	}
+
 
 
 }
@@ -134,12 +144,11 @@ void Tilemap::processInput(SDL_Event e)
 
 void Tilemap::update()
 {
-	if (WaveComplete == true)
-	if (gameLoop->getKeyDown(SDL_SCANCODE_W))
+
+	if (isMoving == true)
 	{
 		DownwardsMovementValue += 2;
 	}
-	
 
 	if (randomtilesassigned == false)
 	{

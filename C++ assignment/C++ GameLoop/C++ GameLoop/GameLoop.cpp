@@ -42,7 +42,7 @@ bool GameLoop::init()
 	tilemap = new Tilemap(this->renderer);
 	tilemap->init();
 	player->init();
-	bm = new BulletManager(this->renderer, this->player);
+	bm = new BulletManager(this->renderer, this->player, this->tilemap);
 	bm->init();
 
 }
@@ -69,6 +69,7 @@ bool GameLoop::processInput()
 
 		tilemap->processInput(e);
 		player->processInput(e);
+		tilemap->processInput(e);
 		bm->processInput(keydown);
 	}
 
