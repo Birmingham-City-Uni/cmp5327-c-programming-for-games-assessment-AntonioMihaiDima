@@ -22,9 +22,14 @@ public:
 	{
 		return ypos;
 	}
+	float getAngle()
+	{
+		return angle;
+	}
 
 protected:
 
+	float angle = 0;
 	float xpos = 768;
 	float ypos = 384;
 	SDL_Rect position;
