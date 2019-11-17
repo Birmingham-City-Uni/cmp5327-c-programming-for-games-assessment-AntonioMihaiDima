@@ -72,7 +72,7 @@ public:
 
 			for (int i = 0; i < 24; i++)
 				for (int j = 0; j < 24; j++)
-					if (tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int(b.x / 32))] == 1)
+					if ((tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int((b.x + 32) / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int((b.x + 32) / 32))] == 1))
 						b.distance = 1501;
 
 

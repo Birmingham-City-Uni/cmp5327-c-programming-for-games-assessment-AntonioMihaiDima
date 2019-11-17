@@ -12,9 +12,9 @@ bool upperright = false;
 bool bottomleft = false;
 bool bottomright = false;
 int collisionnumber = 0;
-int colisionrangex;
-int colisionrangey;
+
 bool collsiondetected = false;
+
 
 
 Player::Player(SDL_Renderer* renderer, Tilemap * tilemap)
@@ -149,47 +149,42 @@ void Player::update()
 void Player::draw()
 {
 
-	if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 2)||(tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 2)||(tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 2))
+	if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 2))
 	{
-		collsiondetected = true;
-		if (collsiondetected == true)
-		{
 
-				if (upmovement == true)
-				{
-					upmovement = false;
-					collisionnumber = 1;
-				}
-				if (downmovement == true)
-				{
-					downmovement = false;
-					collisionnumber = 2;
-				}
-				if (leftmovement == true)
-				{
-					leftmovement = false;
-					collisionnumber = 3;
-				}
-				if (rightmovement == true)
-				{
-					rightmovement = false;
-					collisionnumber = 4;
-				}
-			}
+
+		if (upmovement == true)
+		{
+			upmovement = false;
+			collisionnumber = 1;
+		}
+		if (downmovement == true)
+		{
+			downmovement = false;
+			collisionnumber = 2;
+		}
+		if (leftmovement == true)
+		{
+			leftmovement = false;
+			collisionnumber = 3;
+		}
+		if (rightmovement == true)
+		{
+			rightmovement = false;
+			collisionnumber = 4;
 		}
 
-	
-	else if (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 0)
+
+
+	}
+	else if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 0))
 	{
 		collisionnumber = 0;
-		collsiondetected = false;
 	}
 
 
 
 	SDL_Rect position = { ypos, xpos, playerwidth, playerheight};
-
-	SDL_Rect nullRect;
 
 
 	SDL_Point * center = NULL;
@@ -197,9 +192,7 @@ void Player::draw()
 	SDL_RenderCopyEx(this->renderer, this->playertexture, 0, &position, angle, center, SDL_FLIP_NONE);
 
 
-		{
-			//SDL_Rect tileposition = {}
-		}
+
 
 
 }
