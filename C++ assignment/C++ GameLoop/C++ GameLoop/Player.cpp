@@ -139,14 +139,7 @@ void Player::update()
 		angle = 135;
 	}
 
-	for (int i = 0; i < 25; i++)
-		for (int j = 1; j < 24; j++)
-		{
-			if ((tilemap->tilemaparray[i][j] == 1) || (tilemap->tilemaparray[i][j] == 2))
-			{
-				obstacles[i][j] = tilemap->tilemaparray[i][j];
-			}
-		}
+
 
 }
 
