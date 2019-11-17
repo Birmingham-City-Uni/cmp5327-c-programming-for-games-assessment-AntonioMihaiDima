@@ -75,6 +75,13 @@ public:
 					if ((tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int((b.x + 32) / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int((b.x + 32) / 32))] == 1))
 						b.distance = 1501;
 
+			//Will take this as future reference for a better tilemap collision
+			if ((b.x > 64) && (b.x < 96) && (b.y > 0) && (b.y < 32))
+			{
+				player->DestroyEnemy = true;
+				b.distance = 1501;
+			}
+
 
 
 

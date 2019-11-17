@@ -9,6 +9,7 @@ class Player {
 public:
 	Player(SDL_Renderer*, Tilemap*);
 
+	bool DestroyEnemy = false;
 	void init();
 	void processInput(SDL_Event e);
 	void update();
@@ -39,6 +40,7 @@ protected:
 	float ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
+	SDL_Texture *enemytexture;
 	SDL_Renderer *renderer;
 	Tilemap * tilemap;
 };

@@ -6,5 +6,9 @@ d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c+
 d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(71): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\gameloop.h(11): warning C4099: 'Bullet': type name first seen using 'struct' now seen using 'class'
   d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(25): note: see declaration of 'Bullet'
+  Player.cpp
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(191): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(191): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
 d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\gameloop.cpp(49): warning C4715: 'GameLoop::init': not all control paths return a value
   C++ GameLoop.vcxproj -> D:\C++ assignment\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe
