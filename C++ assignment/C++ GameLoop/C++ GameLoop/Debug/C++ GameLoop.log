@@ -1,4 +1,5 @@
 ﻿  Player.cpp
-d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(139): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(139): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(190): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(190): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(192): warning C4101: 'nullRect': unreferenced local variable
   C++ GameLoop.vcxproj -> D:\C++ assignment\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe

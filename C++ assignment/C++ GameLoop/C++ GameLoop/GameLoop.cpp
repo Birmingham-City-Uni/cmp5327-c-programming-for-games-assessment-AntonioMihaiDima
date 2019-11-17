@@ -38,9 +38,10 @@ bool GameLoop::init()
 
 	//process initialisation for game classes here
 
-	player = new Player(this->renderer);
+
 	tilemap = new Tilemap(this->renderer);
 	tilemap->init();
+	player = new Player(this->renderer, this->tilemap);
 	player->init();
 	bm = new BulletManager(this->renderer, this->player, this->tilemap);
 	bm->init();

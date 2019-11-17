@@ -108,10 +108,11 @@ void Tilemap::init()
 		*/
 
 
-		position.x = 0;
+		/*position.x = 0;
 		position.y = 0;
 		position.h = 32;
 		position.w = 32;
+		*/
 
 		//wall->counter();
 	
@@ -394,16 +395,16 @@ void Tilemap::draw()
 
 		{
 			//SDL_Rect positions orientations are inversed compared to the array's i and j
-			SDL_Rect position = { j * 32, i * 32 + DownwardsMovementValue, 32, 32 };
+			SDL_Rect firstposition = { j * 32, i * 32 + DownwardsMovementValue, 32, 32};
 
 
 			//Here we just render the tilemap depending on the array's values
 			if (tilemaparray[i][j] == 0)
-				SDL_RenderCopy(this->renderer, MapTex, NULL, &position);
+				SDL_RenderCopy(this->renderer, MapTex, NULL, &firstposition);
 			if (tilemaparray[i][j] == 1)
-				SDL_RenderCopy(this->renderer, WallTex, NULL, &position);
+				SDL_RenderCopy(this->renderer, WallTex, NULL, &firstposition);
 			if (tilemaparray[i][j] == 2)
-				SDL_RenderCopy(this->renderer, WaterTex, NULL, &position);
+				SDL_RenderCopy(this->renderer, WaterTex, NULL, &firstposition);
 
 			//This loop is just to test if we constructed the tilemap right
 			//We use the checkmap boolean to make sure that the loop runs only once
@@ -414,7 +415,7 @@ void Tilemap::draw()
 	for (int i = 25; i < 40; i++)
 		for (int j = 0; j < 25; j++)
 		{
-			SDL_Rect secondposition = { j * 32, i * 32 + DownwardsMovementValue, 32, 32 };
+			SDL_Rect secondposition = { j * 32, i * 32 + DownwardsMovementValue, width, height };
 			
 
 			
@@ -437,7 +438,7 @@ void Tilemap::draw()
 		{
 
 			//j should stay positive to render sprites in the same 25 tiles horizontal range.
-			SDL_Rect thirdposition = { j * 32, -1 * toprenderingvalue * 32 + DownwardsMovementValue, 32, 32 };
+			SDL_Rect thirdposition = { j * 32, -1 * toprenderingvalue * 32 + DownwardsMovementValue, width, height};
 
 
 

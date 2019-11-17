@@ -28,7 +28,8 @@ public:
 
 	
 
-
+	int width = 32;
+	int height = 32;
 
 private:
 
@@ -36,9 +37,10 @@ private:
 	SDL_Texture* WallTex;
 	SDL_Texture* WaterTex;
 	SDL_Renderer * renderer;
-	SDL_Rect position;
-	SDL_Rect secondposition;
-	SDL_Rect thirdposition;
+	SDL_Rect * firstposition;
+	SDL_Rect * secondposition;
+	SDL_Rect * thirdposition;
+
 	
 protected:
 

@@ -1,12 +1,13 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
+#include "Tilemap.h"
 
-
+class Tilemap;
 
 class Player {
 public:
-	Player(SDL_Renderer*);
+	Player(SDL_Renderer*, Tilemap*);
 
 	void init();
 	void processInput(SDL_Event e);
@@ -27,6 +28,10 @@ public:
 		return angle;
 	}
 
+	int playerwidth = 32;
+	int playerheight = 32;
+	int obstacles[25][25];
+
 protected:
 
 	float angle = 0;
@@ -35,4 +40,5 @@ protected:
 	SDL_Rect position;
 	SDL_Texture *playertexture;
 	SDL_Renderer *renderer;
+	Tilemap * tilemap;
 };
