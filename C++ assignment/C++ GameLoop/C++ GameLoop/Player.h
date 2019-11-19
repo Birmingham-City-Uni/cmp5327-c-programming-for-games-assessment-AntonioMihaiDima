@@ -36,11 +36,11 @@ public:
 
 protected:
 
-	int xslot = 25;
-	int yslot = 13;
+	int xslot;
+	int yslot;
 	float angle = 0;
-	float xpos = 768;
-	float ypos = 384;
+	int xpos = 768;
+	int ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
 	SDL_Texture *enemytexture;

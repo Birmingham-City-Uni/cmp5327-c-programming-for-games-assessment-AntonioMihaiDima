@@ -11,7 +11,9 @@ bool uppercollision = false;
 bool leftcollision = false;
 bool bottomcollision = false;
 bool rightcollision = false;
-int collisionnumber = 0;
+int lastkeypressed = 0;
+int previouskey = 0;
+
 
 
 bool collsiondetected = false;
@@ -48,22 +50,30 @@ void Player::processInput(SDL_Event e)
 	{
 		if (e.key.keysym.sym == SDLK_w)
 		{
-			//if (collisionnumber != 1)
 			upmovement = true;
+			downmovement = false;
+			leftmovement = false;
+			rightmovement = false;
 		}
 		if (e.key.keysym.sym == SDLK_s)
 		{
-			//if (collisionnumber != 2)
+			upmovement = false;
 			downmovement = true;
+			leftmovement = false;
+			rightmovement = false;
 		}
 		if (e.key.keysym.sym == SDLK_a)
 		{
-			//if (collisionnumber != 3)
+			upmovement = false;
+			downmovement = false;
 			leftmovement = true;
+			rightmovement = false;
 		}
 		if (e.key.keysym.sym == SDLK_d)
 		{
-			//if (collisionnumber != 4)
+			upmovement = false;
+			downmovement = false;
+			leftmovement = false;
 			rightmovement = true;
 		}
 	}
@@ -86,22 +96,24 @@ void Player::processInput(SDL_Event e)
 			rightmovement = false;
 		}
 	}
+	
 
+	
 }
 
 void Player::update()
 {
 
 	if (tilemap->isMoving == false)
-	for (int i = 0; i < 26; i++)
-		for (int j = 0; j < 26; j++)
-		{
-			obstacles[i][j] = tilemap->tilemaparray[i][j];
-		}
+		for (int i = 0; i < 26; i++)
+			for (int j = 0; j < 26; j++)
+			{
+				obstacles[i][j] = tilemap->tilemaparray[i][j];
+			}
 
 
-	xslot = xpos/32 + 1;
-	yslot = ypos/32 + 1;
+	xslot = xpos / 32 + 1;
+	yslot = ypos / 32 + 1;
 
 	uppercollision = false;
 	bottomcollision = false;
@@ -117,12 +129,6 @@ void Player::update()
 			xpos = (xslot) * 32 + 8;
 		}
 
-		if (angle == 45)
-		{
-			xpos = (xslot) * 32 + 8;
-			ypos = (yslot - 1) * 32 - 8;
-
-		}
 	}
 	if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
 	{
@@ -137,7 +143,7 @@ void Player::update()
 		if (angle == 180)
 		{
 			bottomcollision = true;
-			xpos = (xslot -1) * 32 - 8;
+			xpos = (xslot - 1) * 32 - 8;
 		}
 	}
 	if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
@@ -185,9 +191,9 @@ void Player::update()
 
 
 
-	
+
 	//if ((upmovement == true) && (uppercollision == false))
-	if(upmovement && !uppercollision)
+	if (upmovement && !uppercollision)
 	{
 
 		{
@@ -195,7 +201,7 @@ void Player::update()
 			angle = 0;
 		}
 	}
-	if (downmovement && !bottomcollision )
+	if (downmovement && !bottomcollision)
 	{
 
 		{
@@ -220,25 +226,6 @@ void Player::update()
 		}
 	}
 
-	if ((upmovement == true) && (leftmovement == true))
-	{
-		angle = 315;
-	}
-
-	if ((upmovement == true) && (rightmovement == true))
-	{
-		angle = 45;
-	}
-
-	if ((downmovement == true) && (leftmovement == true))
-	{
-		angle = 225;
-	}
-
-	if ((downmovement == true) && (rightmovement == true))
-	{
-		angle = 135;
-	}
 
 
 
@@ -283,11 +270,11 @@ void Player::draw()
 		collisionnumber = 0;
 	}
 	*/
-	
 
 
 
-	SDL_Rect position = { ypos, xpos, playerwidth, playerheight};
+
+	SDL_Rect position = { ypos, xpos, playerwidth, playerheight };
 	SDL_Rect enemyposition = { 64, 0, 32, 32 };
 
 

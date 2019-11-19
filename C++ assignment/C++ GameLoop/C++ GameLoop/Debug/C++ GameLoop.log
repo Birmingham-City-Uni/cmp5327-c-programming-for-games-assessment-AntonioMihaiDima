@@ -1,16 +1,4 @@
 ﻿  Player.cpp
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(103): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(104): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(117): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(122): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(123): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(132): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(140): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(148): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(157): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(165): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(174): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(182): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(290): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-f:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.cpp(290): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  C++ GameLoop.vcxproj -> F:\C++ assignment\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(22): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(26): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  C++ GameLoop.vcxproj -> D:\C++ assignment\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe
