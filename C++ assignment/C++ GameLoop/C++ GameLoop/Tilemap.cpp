@@ -16,7 +16,7 @@ int mainwindowcounter = 0;
 int toprenderingvalue = 1;
 bool halfpicker = true;
 bool WaveComplete = false;
-bool isMoving = false;
+
 
 
 

@@ -7,11 +7,12 @@ bool upmovement = false;
 bool downmovement = false;
 bool leftmovement = false;
 bool rightmovement = false;
-bool upperleft = false;
-bool upperright = false;
-bool bottomleft = false;
-bool bottomright = false;
+bool uppercollision = false;
+bool leftcollision = false;
+bool bottomcollision = false;
+bool rightcollision = false;
 int collisionnumber = 0;
+
 
 bool collsiondetected = false;
 
@@ -34,6 +35,11 @@ void Player::init()
 	SDL_FreeSurface(enemysurface);
 
 
+
+
+	//obstacles[xslot][yslot] = 3;
+
+
 }
 
 void Player::processInput(SDL_Event e)
@@ -42,22 +48,22 @@ void Player::processInput(SDL_Event e)
 	{
 		if (e.key.keysym.sym == SDLK_w)
 		{
-			if (collisionnumber != 1)
+			//if (collisionnumber != 1)
 			upmovement = true;
 		}
 		if (e.key.keysym.sym == SDLK_s)
 		{
-			if (collisionnumber != 2)
+			//if (collisionnumber != 2)
 			downmovement = true;
 		}
 		if (e.key.keysym.sym == SDLK_a)
 		{
-			if (collisionnumber != 3)
+			//if (collisionnumber != 3)
 			leftmovement = true;
 		}
 		if (e.key.keysym.sym == SDLK_d)
 		{
-			if (collisionnumber != 4)
+			//if (collisionnumber != 4)
 			rightmovement = true;
 		}
 	}
@@ -85,36 +91,131 @@ void Player::processInput(SDL_Event e)
 
 void Player::update()
 {
+
+	if (tilemap->isMoving == false)
+	for (int i = 0; i < 26; i++)
+		for (int j = 0; j < 26; j++)
+		{
+			obstacles[i][j] = tilemap->tilemaparray[i][j];
+		}
+
+
+	xslot = xpos/32 + 1;
+	yslot = ypos/32 + 1;
+
+	uppercollision = false;
+	bottomcollision = false;
+	leftcollision = false;
+	rightcollision = false;
+
+
+	if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
+	{
+		if (angle == 0)
+		{
+			uppercollision = true;
+			xpos = (xslot) * 32 + 8;
+		}
+
+		if (angle == 45)
+		{
+			xpos = (xslot) * 32 + 8;
+			ypos = (yslot - 1) * 32 - 8;
+
+		}
+	}
+	if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
+	{
+		if (angle == 0)
+		{
+			uppercollision = true;
+			xpos = (xslot) * 32 + 8;
+		}
+	}
+	if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
+	{
+		if (angle == 180)
+		{
+			bottomcollision = true;
+			xpos = (xslot -1) * 32 - 8;
+		}
+	}
+	if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
+	{
+		if (angle == 180)
+		{
+			bottomcollision = true;
+			xpos = (xslot - 1) * 32 - 8;
+		}
+	}
+
+	if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
+	{
+		if (angle == 90)
+		{
+			rightcollision = true;
+			ypos = (yslot - 1) * 32 - 8;
+		}
+	}
+	if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
+	{
+		if (angle == 90)
+		{
+			rightcollision = true;
+			ypos = (yslot - 1) * 32 - 8;
+			std::cout << "Collision" << std::endl;
+		}
+	}
+	if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
+	{
+		if (angle == 270)
+		{
+			leftcollision = true;
+			ypos = (yslot) * 32 + 8;
+		}
+	}
+	if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
+	{
+		if (angle == 270)
+		{
+			leftcollision = true;
+			ypos = (yslot) * 32 + 8;
+		}
+	}
+
+
+
 	
-	if (upmovement == true)
+	//if ((upmovement == true) && (uppercollision == false))
+	if(upmovement && !uppercollision)
 	{
 
 		{
-			xpos -= 2;
+			xpos -= 3;
 			angle = 0;
 		}
 	}
-	if (downmovement == true)
+	if (downmovement && !bottomcollision )
 	{
 
 		{
-			xpos += 2;
+			xpos += 3;
 			angle = 180;
 		}
 	}
-	if (leftmovement == true)
+	if (leftmovement && !leftcollision)
 	{
 
 		{
-			ypos -= 2;
+			ypos -= 3;
 			angle = 270;
 		}
 	}
-	if (rightmovement == true)
+	if (rightmovement && !rightcollision)
 	{
 
 		{
-			ypos += 2;
+			ypos += 3;
 			angle = 90;
 		}
 	}
@@ -146,7 +247,10 @@ void Player::update()
 void Player::draw()
 {
 
-	if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 2))
+
+
+
+	/*if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 2))
 	{
 
 
@@ -178,6 +282,8 @@ void Player::draw()
 	{
 		collisionnumber = 0;
 	}
+	*/
+	
 
 
 

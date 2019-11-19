@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Tilemap.h"
+#include <iostream>
 
 class Tilemap;
 
@@ -31,10 +32,12 @@ public:
 
 	int playerwidth = 32;
 	int playerheight = 32;
-	int obstacles[25][25];
+	int obstacles[26][26];
 
 protected:
 
+	int xslot = 25;
+	int yslot = 13;
 	float angle = 0;
 	float xpos = 768;
 	float ypos = 384;

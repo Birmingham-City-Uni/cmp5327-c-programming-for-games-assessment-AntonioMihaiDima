@@ -12,7 +12,7 @@ class Tilemap {
 public:
 
 
-
+	bool isMoving = false;
 
 	Tilemap(SDL_Renderer*);
 
