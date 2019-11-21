@@ -30,6 +30,16 @@ public:
 		return angle;
 	}
 
+	/*int getXSlot()
+	{
+		return xslot;
+	}
+	int getYSlot()
+	{
+		return yslot;
+	}
+	*/
+
 	int playerwidth = 32;
 	int playerheight = 32;
 	int obstacles[26][26];

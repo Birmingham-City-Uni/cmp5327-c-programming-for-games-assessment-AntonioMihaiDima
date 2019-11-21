@@ -126,7 +126,13 @@ void Player::update()
 		if (angle == 0)
 		{
 			uppercollision = true;
-			xpos = (xslot) * 32 + 8;
+			xpos = (xslot) * 32 + 1;
+		}
+		if (angle == 90)
+		{
+			rightcollision = true;
+			ypos = (yslot - 1) * 32 - 1;
+			std::cout << "Collision" << std::endl;
 		}
 
 	}
@@ -135,7 +141,12 @@ void Player::update()
 		if (angle == 0)
 		{
 			uppercollision = true;
-			xpos = (xslot) * 32 + 8;
+			xpos = (xslot) * 32 + 1;
+		}
+		if (angle == 270)
+		{
+			leftcollision = true;
+			ypos = (yslot) * 32 + 1;
 		}
 	}
 	if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
@@ -143,7 +154,12 @@ void Player::update()
 		if (angle == 180)
 		{
 			bottomcollision = true;
-			xpos = (xslot - 1) * 32 - 8;
+			xpos = (xslot - 1) * 32 - 1;
+		}
+		if (angle == 90)
+		{
+			rightcollision = true;
+			ypos = (yslot - 1) * 32 - 1;
 		}
 	}
 	if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
@@ -151,41 +167,12 @@ void Player::update()
 		if (angle == 180)
 		{
 			bottomcollision = true;
-			xpos = (xslot - 1) * 32 - 8;
+			xpos = (xslot - 1) * 32 - 1;
 		}
-	}
-
-	if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
-	{
-		if (angle == 90)
-		{
-			rightcollision = true;
-			ypos = (yslot - 1) * 32 - 8;
-		}
-	}
-	if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
-	{
-		if (angle == 90)
-		{
-			rightcollision = true;
-			ypos = (yslot - 1) * 32 - 8;
-			std::cout << "Collision" << std::endl;
-		}
-	}
-	if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
-	{
 		if (angle == 270)
 		{
 			leftcollision = true;
-			ypos = (yslot) * 32 + 8;
-		}
-	}
-	if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
-	{
-		if (angle == 270)
-		{
-			leftcollision = true;
-			ypos = (yslot) * 32 + 8;
+			ypos = (yslot) * 32 + 1;
 		}
 	}
 

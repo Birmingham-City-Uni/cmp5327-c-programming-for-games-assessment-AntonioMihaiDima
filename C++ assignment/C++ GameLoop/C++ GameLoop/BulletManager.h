@@ -41,7 +41,23 @@ public:
 	void processInput(bool * keydown) {
 		if (keydown[SDL_SCANCODE_SPACE]) {
 			if (SDL_GetTicks() - lastShot > SHOOT_TIMER_MS) {
-				bullets.push_back(Bullet{ player->getypos() + 18, player->getxpos(), player->getAngle(), 0.0f });
+				if (int(player->getAngle()) == 0)
+				{
+					bullets.push_back(Bullet{ player->getypos() + 18, player->getxpos(), player->getAngle(), 0.0f });
+				}
+				if (int(player->getAngle()) == 270)
+				{
+					bullets.push_back(Bullet{ player->getypos(), player->getxpos() + 5, player->getAngle(), 0.0f });
+				}
+				if (int(player->getAngle()) == 180)
+				{
+					bullets.push_back(Bullet{ player->getypos() + 5, player->getxpos() + 20, player->getAngle(), 0.0f });
+				}
+				if (int(player->getAngle()) == 90)
+				{
+					bullets.push_back(Bullet{ player->getypos() + 20, player->getxpos() + 16, player->getAngle(), 0.0f });
+				}
+
 				lastShot = SDL_GetTicks();
 			}
 		}
@@ -57,22 +73,21 @@ public:
 		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullet& b) { return b.distance > 1500; });
 		bullets.erase(remove, bullets.end());
 
-		for (int i = 0; i < 24; i++)
-			for (int j = 0; j <= 24; j++)
-			{
-
-			}
 
 	}
 
 	void draw() {
-		SDL_Point center = { 5, 5 };
+		
 		for (auto &b : bullets) {
+			SDL_Point center = { 5, 5 };
 			SDL_Rect dest = { b.x, b.y, 11, 11 };
+
+
 
 			for (int i = 0; i < 24; i++)
 				for (int j = 0; j < 24; j++)
-					if ((tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int((b.x + 32) / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int((b.x + 32) / 32))] == 1))
+					//if ((tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int(b.x / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int(b.y / 32))][(int((b.x + 32) / 32))] == 1) || (tilemaparraypointer->tilemaparray[(int((b.y + 32) / 32))][(int((b.x + 32) / 32))] == 1))
+					if ((player->obstacles[int(b.y / 32)][int(b.x / 32)] == 1))
 						b.distance = 1501;
 
 			//Will take this as future reference for a better tilemap collision
