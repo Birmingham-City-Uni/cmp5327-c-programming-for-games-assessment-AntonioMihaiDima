@@ -32,9 +32,10 @@ void Player::init()
 	this->playertexture = SDL_CreateTextureFromSurface(this->renderer, surface);
 	SDL_FreeSurface(surface);
 
-	SDL_Surface * enemysurface = IMG_Load("debug/EnemyTexture.png");
+/*	SDL_Surface * enemysurface = IMG_Load("debug/EnemyTexture.png");
 	this->enemytexture = SDL_CreateTextureFromSurface(this->renderer, enemysurface);
 	SDL_FreeSurface(enemysurface);
+	*/
 
 
 
@@ -268,13 +269,13 @@ void Player::draw()
 
 	SDL_Point * center = NULL;
 
-	SDL_RenderCopyEx(this->renderer, this->enemytexture, 0, &enemyposition, angle, center, SDL_FLIP_NONE);
+	//SDL_RenderCopyEx(this->renderer, this->enemytexture, 0, &enemyposition, angle, center, SDL_FLIP_NONE);
 
 	SDL_RenderCopyEx(this->renderer, this->playertexture, 0, &position, angle, center, SDL_FLIP_NONE);
 
 	//I put it here for testing, will move it in a better place later.
-	if (DestroyEnemy == true)
-		SDL_DestroyTexture(this->enemytexture);
+	//if (DestroyEnemy == true)
+		//SDL_DestroyTexture(this->enemytexture);
 
 
 
@@ -285,5 +286,5 @@ void Player::draw()
 void Player::clean()
 {
 	SDL_DestroyTexture(this->playertexture);
-	SDL_DestroyTexture(this->enemytexture);
+	//SDL_DestroyTexture(this->enemytexture);
 }

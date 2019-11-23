@@ -27,6 +27,7 @@ struct Bullet {
 };
 
 class BulletManager {
+	friend class EnemyManager;
 public:
 	BulletManager(SDL_Renderer * renderer, Player * player, Tilemap * tilemaparraypointer) : renderer(renderer), player(player), tilemaparraypointer(tilemaparraypointer) {}
 
@@ -108,13 +109,14 @@ public:
 		SDL_DestroyTexture(this->bulletTexture);
 	}
 
+	Player * player;
 
 private:
 	SDL_Renderer * renderer;
 	SDL_Texture * bulletTexture;
 	vector<Bullet> bullets;
 	//need a reference to the player to get the angle
-	Player * player;
+	
 	Tilemap *tilemaparraypointer;
 
 	//time limit between shots

@@ -53,7 +53,7 @@ protected:
 	int ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
-	SDL_Texture *enemytexture;
+	//SDL_Texture *enemytexture;
 	SDL_Renderer *renderer;
 	Tilemap * tilemap;
 };

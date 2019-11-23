@@ -40,11 +40,14 @@ bool GameLoop::init()
 
 
 	tilemap = new Tilemap(this->renderer);
-	tilemap->init();
 	player = new Player(this->renderer, this->tilemap);
-	player->init();
 	bm = new BulletManager(this->renderer, this->player, this->tilemap);
+	em = new EnemyManager(this->renderer, this->bm);
+	tilemap->init();
+	player->init();
 	bm->init();
+	em->init();
+
 
 }
 
@@ -85,6 +88,7 @@ void GameLoop::update()
 	tilemap->update();
 	player->update();
 	bm->update();
+	em->update();
 
 }
 
@@ -97,6 +101,7 @@ void GameLoop::draw()
 	tilemap->draw();
 	player->draw();
 	bm->draw();
+	em->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);

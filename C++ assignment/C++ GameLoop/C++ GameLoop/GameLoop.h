@@ -5,14 +5,17 @@
 #include "Tilemap.h"
 #include "Player.h"
 #include "BulletManager.h"
+#include "EnemyManager.h"
 
 using namespace std;
 
-class Bullet;
+class BulletManager;
 
 class Player;
 
 class Tilemap;
+
+class EnemyManager;
 
 class GameLoop {
 
@@ -41,6 +44,7 @@ public:
 
 private:
 	BulletManager * bm;
+	EnemyManager * em;
 	SDL_Window* window;
 	SDL_Renderer * renderer;
 
