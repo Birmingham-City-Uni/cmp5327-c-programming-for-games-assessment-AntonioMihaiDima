@@ -18,7 +18,7 @@ struct Enemy {
 	int directionpicked = 0;
 	bool bottomcollision = false;
 	bool directiontobepicked = false;
-	
+
 };
 
 
@@ -72,7 +72,7 @@ public:
 
 		if (distancetravelled < 32)
 		{
-			for (auto &e : enemies) 
+			for (auto &e : enemies)
 			{
 
 
@@ -86,20 +86,24 @@ public:
 						e.rotation = 0;
 
 					}
-					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0)
+					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
 					{
+						//e.x -= 32;
 						e.directionpicked = 1;
 						e.bottomcollision = false;
 						e.rotation = 270;
+
 					}
-					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
+					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0)
 					{
+						//e.x -= 32;
 						e.directionpicked = 2;
 						e.bottomcollision = false;
 						e.rotation = 90;
 					}
 					else
 					{
+						//e.x -= 32;
 						e.directionpicked = 3;
 						e.bottomcollision = true;
 						e.rotation = 180;
@@ -115,11 +119,11 @@ public:
 				}
 				if (e.directionpicked == 1)
 				{
-					e.y -= 2;
+					e.y += 2;
 				}
 				if (e.directionpicked == 2)
 				{
-					e.y += 2;
+					e.y -= 2;
 				}
 				if (e.directionpicked == 3)
 				{
@@ -192,7 +196,7 @@ private:
 	int enemytype = 0;
 	int enemynumber = 0;
 
-	
-	
+
+
 
 };
