@@ -57,7 +57,7 @@ public:
 	void update()
 	{
 		if (enemycount < MaxEnemies)
-			if (SDL_GetTicks() - lastSpawn > SpawnMs)
+			if (SDL_GetTicks() - lastSpawn > SpawnMs && distancetravelled == 0)
 			{
 				spawnpicker = rand() % 23 + 1;
 				enemies.push_back(Enemy{ 0, float(spawnpicker * 32) , angle, 0.0f });
