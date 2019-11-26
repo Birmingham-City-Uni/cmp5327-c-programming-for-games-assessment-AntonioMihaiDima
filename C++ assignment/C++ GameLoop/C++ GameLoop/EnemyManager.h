@@ -56,7 +56,7 @@ public:
 
 	void update()
 	{
-		if (enemycount < 6)
+		if (enemycount < MaxEnemies)
 			if (SDL_GetTicks() - lastSpawn > SpawnMs)
 			{
 				spawnpicker = rand() % 23 + 1;
@@ -66,6 +66,7 @@ public:
 				lastSpawn = SDL_GetTicks();
 				cout << SDL_GetTicks() << " ";
 			}
+
 
 
 
@@ -147,9 +148,19 @@ public:
 
 		}
 
+		for (auto &e : enemies)
+		{
+			if (e.x > 768)
+			{
+				enemiesremaining--;
+				cout << enemiesremaining << " ";
+			}
+		}
 
 
-
+		auto remove = std::remove_if(enemies.begin(), enemies.end(), [](const Enemy& e) { return e.x > 768; });
+		
+			enemies.erase(remove, enemies.end());
 
 	}
 
@@ -195,6 +206,8 @@ private:
 	int distancetravelled = 0;
 	int enemytype = 0;
 	int enemynumber = 0;
+	int enemiesremaining = MaxEnemies;
+
 
 
 
