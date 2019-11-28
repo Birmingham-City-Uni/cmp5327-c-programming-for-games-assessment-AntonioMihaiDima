@@ -43,6 +43,17 @@ public:
 	int playerwidth = 32;
 	int playerheight = 32;
 	int obstacles[26][26];
+	bool NoMoreEnemies = false;
+
+	bool upmovement = false;
+	bool downmovement = false;
+	bool leftmovement = false;
+	bool rightmovement = false;
+
+	int distancetravelled = 0;
+	bool directiontobepicked = false;
+	int directionpicked;
+	bool perfectxpos = false;
 
 protected:
 

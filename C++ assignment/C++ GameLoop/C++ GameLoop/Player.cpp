@@ -3,10 +3,7 @@
 
 
 
-bool upmovement = false;
-bool downmovement = false;
-bool leftmovement = false;
-bool rightmovement = false;
+
 bool uppercollision = false;
 bool leftcollision = false;
 bool bottomcollision = false;
@@ -104,6 +101,17 @@ void Player::processInput(SDL_Event e)
 
 void Player::update()
 {
+	//Here we just make sure the player can't control the player sprite until the map is scrolled.
+	if (NoMoreEnemies == true)
+	{
+		upmovement = false;
+		downmovement = false;
+		leftmovement = false;
+		rightmovement = false;
+	}
+
+
+
 
 	if (tilemap->isMoving == false)
 		for (int i = 0; i < 26; i++)
@@ -121,63 +129,147 @@ void Player::update()
 	leftcollision = false;
 	rightcollision = false;
 
-
-	if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
+	if (NoMoreEnemies == false)
 	{
-		if (angle == 0)
+		if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
 		{
-			uppercollision = true;
-			xpos = (xslot) * 32 + 1;
-		}
-		if (angle == 90)
-		{
-			rightcollision = true;
-			ypos = (yslot - 1) * 32 - 1;
-			std::cout << "Collision" << std::endl;
-		}
+			if (angle == 0)
+			{
+				uppercollision = true;
+				xpos = (xslot) * 32 + 2;
+			}
+			if (angle == 90)
+			{
+				rightcollision = true;
+				ypos = (yslot - 1) * 32 - 2;
+				std::cout << "Collision" << std::endl;
+			}
 
-	}
-	if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
-	{
-		if (angle == 0)
-		{
-			uppercollision = true;
-			xpos = (xslot) * 32 + 1;
 		}
-		if (angle == 270)
+		if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
 		{
-			leftcollision = true;
-			ypos = (yslot) * 32 + 1;
+			if (angle == 0)
+			{
+				uppercollision = true;
+				xpos = (xslot) * 32 + 2;
+			}
+			if (angle == 270)
+			{
+				leftcollision = true;
+				ypos = (yslot) * 32 + 2;
+			}
 		}
-	}
-	if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
-	{
-		if (angle == 180)
+		if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
 		{
-			bottomcollision = true;
-			xpos = (xslot - 1) * 32 - 1;
+			if (angle == 180)
+			{
+				bottomcollision = true;
+				xpos = (xslot - 1) * 32 - 2;
+			}
+			if (angle == 90)
+			{
+				rightcollision = true;
+				ypos = (yslot - 1) * 32 - 2;
+			}
 		}
-		if (angle == 90)
+		if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
 		{
-			rightcollision = true;
-			ypos = (yslot - 1) * 32 - 1;
-		}
-	}
-	if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
-	{
-		if (angle == 180)
-		{
-			bottomcollision = true;
-			xpos = (xslot - 1) * 32 - 1;
-		}
-		if (angle == 270)
-		{
-			leftcollision = true;
-			ypos = (yslot) * 32 + 1;
+			if (angle == 180)
+			{
+				bottomcollision = true;
+				xpos = (xslot - 1) * 32 - 2;
+			}
+			if (angle == 270)
+			{
+				leftcollision = true;
+				ypos = (yslot) * 32 + 2;
+			}
 		}
 	}
 
+	if (NoMoreEnemies == true)
+	{
 
+		//Here we check if there's any offset from a perfect 32 division. We use this to prepare our player for down movement.
+		if (perfectxpos == false)
+			{
+				ypos = ypos / 32 * 32;
+				xpos = xpos / 32 * 32;
+				angle = 180;
+				perfectxpos = true;
+
+
+			}
+
+
+
+		if (xpos < 768)
+		{
+			if (distancetravelled < 32)
+			{
+				if (directiontobepicked == false)
+				{
+					if ((obstacles[int(xpos / 32) + 1][int(ypos / 32)] == 0) && (bottomcollision == false))
+					{
+						directionpicked = 0;
+						angle = 180;
+					}
+					else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+					{
+						directionpicked = 1;
+						bottomcollision = false;
+						angle = 90;
+					}
+					else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+					{
+						directionpicked = 2;
+						bottomcollision = false;
+						angle = 270;
+					}
+					else
+					{
+						directionpicked = 3;
+						bottomcollision = true;
+						angle = 0;
+					}
+
+					directiontobepicked = true;
+
+				}
+				if (directionpicked == 0)
+				{
+					xpos += 2;
+				}
+				if (directionpicked == 1)
+				{
+					ypos += 2;
+				}
+				if (directionpicked == 2)
+				{
+					ypos -= 2;
+				}
+				if (directionpicked == 3)
+				{
+					xpos -= 2;
+				}
+
+
+
+			}
+
+			distancetravelled += 2;
+
+
+			if (distancetravelled == 32)
+			{
+				directiontobepicked = false;
+				distancetravelled = 0;
+			}
+
+
+
+		}
+	}
 
 
 	//if ((upmovement == true) && (uppercollision == false))
@@ -185,7 +277,7 @@ void Player::update()
 	{
 
 		{
-			xpos -= 3;
+			xpos -= 2;
 			angle = 0;
 		}
 	}
@@ -193,7 +285,7 @@ void Player::update()
 	{
 
 		{
-			xpos += 3;
+			xpos += 2;
 			angle = 180;
 		}
 	}
@@ -201,7 +293,7 @@ void Player::update()
 	{
 
 		{
-			ypos -= 3;
+			ypos -= 2;
 			angle = 270;
 		}
 	}
@@ -209,7 +301,7 @@ void Player::update()
 	{
 
 		{
-			ypos += 3;
+			ypos += 2;
 			angle = 90;
 		}
 	}

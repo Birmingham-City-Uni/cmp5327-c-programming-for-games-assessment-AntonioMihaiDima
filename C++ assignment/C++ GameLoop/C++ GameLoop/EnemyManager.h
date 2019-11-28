@@ -162,6 +162,20 @@ public:
 		
 			enemies.erase(remove, enemies.end());
 
+
+
+			//Here we just check if any enemies are alive so we can stop the player movement.
+			if (enemiesremaining == 0)
+			{
+				bulletmanager->player->NoMoreEnemies = true;
+			}
+			
+			else
+			{
+				bulletmanager->player->NoMoreEnemies = false;
+			}
+			
+
 	}
 
 
