@@ -15,7 +15,7 @@ bool TilesToBeChanged = false;
 int mainwindowcounter = 0;
 int toprenderingvalue = 1;
 bool halfpicker = true;
-bool WaveComplete = false;
+
 
 
 
@@ -124,19 +124,7 @@ void Tilemap::init()
 
 void Tilemap::processInput(SDL_Event e)
 {
-	if (WaveComplete == true)
-	{
-		if (e.type == SDL_KEYDOWN)
-			if (e.key.keysym.sym == SDLK_w)
-			{
-				isMoving = true;
-			}
-		if (e.type == SDL_KEYUP)
-			if (e.key.keysym.sym == SDLK_w)
-			{
-				isMoving = false;
-			}
-	}
+
 
 
 
@@ -145,6 +133,23 @@ void Tilemap::processInput(SDL_Event e)
 
 void Tilemap::update()
 {
+	if (WaveComplete == true)
+	{
+		if (uppercollision == false)
+		{
+			isMoving = true;
+		}
+		else
+		{
+			isMoving = false;
+		}
+	}
+	else
+	{
+		isMoving = false;
+	}
+
+
 
 	if (isMoving == true)
 	{

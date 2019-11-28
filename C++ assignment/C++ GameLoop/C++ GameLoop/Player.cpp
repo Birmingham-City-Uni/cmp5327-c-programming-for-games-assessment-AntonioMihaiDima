@@ -269,6 +269,73 @@ void Player::update()
 
 
 		}
+		//Now the player is at the bottom position
+		if (xpos == 768)
+		{
+			tilemap->WaveComplete = true;
+		}
+
+		if (tilemap->WaveComplete == true)
+		{
+			if (distancetravelled < 32)
+			{
+				if (directiontobepicked == false)
+				{
+					if ((tilemap->tilemaparray[int(xpos / 32) - 1][int(ypos / 32)] == 0) && (uppercollision == false))
+					{
+						angle = 0;
+						tilemap->uppercollision = false;
+						directionpicked = 0;
+					}
+					else if (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+					{
+						angle = 90;
+						tilemap->uppercollision = true;
+						directionpicked = 1;
+						uppercollision = true;					
+					}
+					else if (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+					{
+						angle = 270;
+						tilemap->uppercollision = true;
+						directionpicked = 2;
+						uppercollision = true;
+					}
+					else
+					{
+						angle = 180;
+						tilemap->uppercollision = true;
+						directionpicked = 3;
+						uppercollision = true;
+					}
+					directiontobepicked = true;
+				}
+				if (directionpicked == 0)
+				{
+					xpos -= 2;
+				}
+				if (directionpicked == 1)
+				{
+					ypos += 2;
+				}
+				if (directionpicked == 2)
+				{
+					ypos -= 2;
+				}
+				if (directionpicked == 3)
+				{
+					xpos += 2;
+				}
+			}
+			distancetravelled += 2;
+
+
+			if (distancetravelled == 32)
+			{
+				directiontobepicked = false;
+				distancetravelled = 0;
+			}
+		}
 	}
 
 

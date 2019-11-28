@@ -30,6 +30,8 @@ public:
 
 	int width = 32;
 	int height = 32;
+	bool WaveComplete = false;
+	bool uppercollision = false;
 
 private:
 
