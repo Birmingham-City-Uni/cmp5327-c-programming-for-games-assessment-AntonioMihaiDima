@@ -32,6 +32,8 @@ public:
 	int height = 32;
 	bool WaveComplete = false;
 	bool uppercollision = false;
+	bool mapscrolled = false;
+	int mainwindowcounter = 0;
 
 private:
 

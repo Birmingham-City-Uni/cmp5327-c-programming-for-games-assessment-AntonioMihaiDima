@@ -12,7 +12,7 @@ bool randomtilesassigned = false;
 int DownwardsMovementValue = 0;
 bool MovingUp = false;
 bool TilesToBeChanged = false;
-int mainwindowcounter = 0;
+
 int toprenderingvalue = 1;
 bool halfpicker = true;
 
@@ -385,7 +385,7 @@ void Tilemap::update()
 			}
 		}
 
-
+		mapscrolled = true;
 		mainwindowcounter = 0;
 		halfpicker = !halfpicker;
 	}

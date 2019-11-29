@@ -162,15 +162,25 @@ public:
 		
 			enemies.erase(remove, enemies.end());
 
+			if(bulletmanager->tilemaparraypointer->mapscrolled)
+			{
+				MaxEnemies += 2;
+				enemiesremaining = MaxEnemies;
+				enemycount = 0;
+				bulletmanager->tilemaparraypointer->WaveComplete = false;
+				bulletmanager->player->perfectxpos = false;
+				bulletmanager->tilemaparraypointer->mapscrolled = false;
+				bulletmanager->player->distancetravelled = 0;
+			}
 
 
 			//Here we just check if any enemies are alive so we can stop the player movement.
-			if (enemiesremaining == 0)
+			if (enemiesremaining <= 0)
 			{
 				bulletmanager->player->NoMoreEnemies = true;
 			}
 			
-			else
+			else if (enemiesremaining > 0)
 			{
 				bulletmanager->player->NoMoreEnemies = false;
 			}

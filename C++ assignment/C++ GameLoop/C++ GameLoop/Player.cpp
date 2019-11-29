@@ -101,6 +101,7 @@ void Player::processInput(SDL_Event e)
 
 void Player::update()
 {
+
 	//Here we just make sure the player can't control the player sprite until the map is scrolled.
 	if (NoMoreEnemies == true)
 	{
@@ -111,14 +112,13 @@ void Player::update()
 	}
 
 
+	for (int i = 0; i < 26; i++)
+		for (int j = 0; j < 26; j++)
+		{
+			obstacles[i][j] = tilemap->tilemaparray[i][j];
+		}
 
 
-	if (tilemap->isMoving == false)
-		for (int i = 0; i < 26; i++)
-			for (int j = 0; j < 26; j++)
-			{
-				obstacles[i][j] = tilemap->tilemaparray[i][j];
-			}
 
 
 	xslot = xpos / 32 + 1;
@@ -197,8 +197,6 @@ void Player::update()
 				xpos = xpos / 32 * 32;
 				angle = 180;
 				perfectxpos = true;
-
-
 			}
 
 
@@ -270,7 +268,8 @@ void Player::update()
 
 		}
 		//Now the player is at the bottom position
-		if (xpos == 768)
+		
+		if (xpos >= 768)
 		{
 			tilemap->WaveComplete = true;
 		}
@@ -281,20 +280,20 @@ void Player::update()
 			{
 				if (directiontobepicked == false)
 				{
-					if ((tilemap->tilemaparray[int(xpos / 32) - 1][int(ypos / 32)] == 0) && (uppercollision == false))
+					if ((obstacles[int(xpos / 32) - 1][int(ypos / 32)] == 0) && (uppercollision == false))
 					{
 						angle = 0;
 						tilemap->uppercollision = false;
 						directionpicked = 0;
 					}
-					else if (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+					else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
 					{
 						angle = 90;
 						tilemap->uppercollision = true;
 						directionpicked = 1;
 						uppercollision = true;					
 					}
-					else if (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+					else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
 					{
 						angle = 270;
 						tilemap->uppercollision = true;
@@ -372,55 +371,10 @@ void Player::update()
 			angle = 90;
 		}
 	}
-
-
-
-
 }
 
 void Player::draw()
 {
-
-
-
-
-	/*if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 2) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 1) || (tilemap->tilemaparray[int((xpos + 32) / 32)][int(ypos / 32)] == 2) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 1) || (tilemap->tilemaparray[int(xpos / 32)][int((ypos + 32) / 32)] == 2))
-	{
-
-
-		if (upmovement == true)
-		{
-			upmovement = false;
-			collisionnumber = 1;
-		}
-		if (downmovement == true)
-		{
-			downmovement = false;
-			collisionnumber = 2;
-		}
-		if (leftmovement == true)
-		{
-			leftmovement = false;
-			collisionnumber = 3;
-		}
-		if (rightmovement == true)
-		{
-			rightmovement = false;
-			collisionnumber = 4;
-		}
-
-
-
-	}
-	else if ((tilemap->tilemaparray[int(xpos / 32)][int(ypos / 32)] == 0))
-	{
-		collisionnumber = 0;
-	}
-	*/
-
-
-
-
 	SDL_Rect position = { ypos, xpos, playerwidth, playerheight };
 	SDL_Rect enemyposition = { 64, 0, 32, 32 };
 
