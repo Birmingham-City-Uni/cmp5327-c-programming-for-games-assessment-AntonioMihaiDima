@@ -28,6 +28,8 @@ class EnemyManager {
 public:
 	EnemyManager(SDL_Renderer * renderer, BulletManager* bulletmanager) : renderer(renderer), bulletmanager(bulletmanager) {}
 
+	int enemiesremaining = 6;
+
 	void init()
 	{
 		SDL_Surface * Enemy1Surface = IMG_Load("debug/Enemy1.png");
@@ -230,7 +232,7 @@ private:
 	int distancetravelled = 0;
 	int enemytype = 0;
 	int enemynumber = 0;
-	int enemiesremaining = MaxEnemies;
+
 
 
 

@@ -43,7 +43,7 @@ bool GameLoop::init()
 	player = new Player(this->renderer, this->tilemap);
 	bm = new BulletManager(this->renderer, this->player, this->tilemap);
 	em = new EnemyManager(this->renderer, this->bm);
-	textRenderer = new TextRenderer(this->renderer);
+	textRenderer = new TextRenderer(this->renderer, this->em);
 	tilemap->init();
 	player->init();
 	bm->init();
