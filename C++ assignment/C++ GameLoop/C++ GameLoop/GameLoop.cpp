@@ -43,10 +43,13 @@ bool GameLoop::init()
 	player = new Player(this->renderer, this->tilemap);
 	bm = new BulletManager(this->renderer, this->player, this->tilemap);
 	em = new EnemyManager(this->renderer, this->bm);
+	textRenderer = new TextRenderer(this->renderer);
 	tilemap->init();
 	player->init();
 	bm->init();
 	em->init();
+	textRenderer->init();
+	
 
 
 }
@@ -102,6 +105,7 @@ void GameLoop::draw()
 	player->draw();
 	bm->draw();
 	em->draw();
+	textRenderer->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);

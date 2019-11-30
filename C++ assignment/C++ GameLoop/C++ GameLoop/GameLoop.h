@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "BulletManager.h"
 #include "EnemyManager.h"
+#include "TextRenderer.h"
 
 using namespace std;
 
@@ -16,6 +17,8 @@ class Player;
 class Tilemap;
 
 class EnemyManager;
+
+class TextRenderer;
 
 class GameLoop {
 
@@ -50,6 +53,7 @@ private:
 
 	Player * player;
 	Tilemap * tilemap;
+	TextRenderer* textRenderer;
 	bool keydown[256];
 
 };

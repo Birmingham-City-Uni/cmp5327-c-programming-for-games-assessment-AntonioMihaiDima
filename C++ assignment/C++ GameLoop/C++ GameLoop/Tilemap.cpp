@@ -479,9 +479,7 @@ void Tilemap::draw()
 		checkmap = false;
 
 
-	}
-
-	
+	}	
 }
 
 void Tilemap::clean()

@@ -1,25 +1,63 @@
-﻿  C++ GameLoop.cpp
+﻿  pch.cpp
+  C++ GameLoop.cpp
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(22): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(26): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(44): warning C4018: '>': signed/unsigned mismatch
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(69): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(70): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(50): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(60): warning C4018: '>': signed/unsigned mismatch
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(198): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(198): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   GameLoop.cpp
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(22): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(26): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(44): warning C4018: '>': signed/unsigned mismatch
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(69): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(70): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(50): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(60): warning C4018: '>': signed/unsigned mismatch
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(198): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(198): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Player.cpp
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(22): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(26): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  Tilemap.cpp
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\tilemap.cpp(69): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating Code...
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+d:\c++ assignment\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\gameloop.cpp(55): warning C4715: 'GameLoop::init': not all control paths return a value
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_GetError referenced in function "public: bool __cdecl GameLoop::init(void)" (?init@GameLoop@@QEAA_NXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: void __cdecl BulletManager::init(void)" (?init@BulletManager@@QEAAXXZ)
 Player.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "public: void __cdecl GameLoop::clean(void)" (?clean@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: void __cdecl GameLoop::processInput(void)" (?processInput@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateRenderer referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+Tilemap.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "public: bool __cdecl GameLoop::init(void)" (?init@GameLoop@@QEAA_NXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: bool __cdecl GameLoop::processInput(void)" (?processInput@GameLoop@@QEAA_NXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateRenderer referenced in function "public: bool __cdecl GameLoop::init(void)" (?init@GameLoop@@QEAA_NXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "public: void __cdecl BulletManager::init(void)" (?init@BulletManager@@QEAAXXZ)
 Player.obj : error LNK2001: unresolved external symbol SDL_CreateTextureFromSurface
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl GameLoop::render(void)" (?render@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderCopy referenced in function "public: void __cdecl GameLoop::render(void)" (?render@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderPresent referenced in function "public: void __cdecl GameLoop::render(void)" (?render@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_DestroyRenderer referenced in function "public: void __cdecl GameLoop::clean(void)" (?clean@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
-GameLoop.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "public: void __cdecl GameLoop::clean(void)" (?clean@GameLoop@@QEAAXXZ)
-GameLoop.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: void __cdecl GameLoop::init(char const *,int,int,int,int,bool)" (?init@GameLoop@@QEAAXPEBDHHHH_N@Z)
+Tilemap.obj : error LNK2001: unresolved external symbol SDL_CreateTextureFromSurface
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl GameLoop::draw(void)" (?draw@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderCopy referenced in function "public: void __cdecl TextRenderer::draw(void)" (?draw@TextRenderer@@QEAAXXZ)
+Tilemap.obj : error LNK2001: unresolved external symbol SDL_RenderCopy
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderCopyEx referenced in function "public: void __cdecl BulletManager::draw(void)" (?draw@BulletManager@@QEAAXXZ)
+Player.obj : error LNK2001: unresolved external symbol SDL_RenderCopyEx
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_RenderPresent referenced in function "public: void __cdecl GameLoop::draw(void)" (?draw@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_DestroyTexture referenced in function "public: void __cdecl BulletManager::clean(void)" (?clean@BulletManager@@QEAAXXZ)
+Player.obj : error LNK2001: unresolved external symbol SDL_DestroyTexture
+Tilemap.obj : error LNK2001: unresolved external symbol SDL_DestroyTexture
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_GetTicks referenced in function "public: void __cdecl BulletManager::processInput(bool *)" (?processInput@BulletManager@@QEAAXPEA_N@Z)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_Delay referenced in function "public: void __cdecl GameLoop::draw(void)" (?draw@GameLoop@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "public: bool __cdecl GameLoop::init(void)" (?init@GameLoop@@QEAA_NXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: void __cdecl BulletManager::init(void)" (?init@BulletManager@@QEAAXXZ)
 Player.obj : error LNK2001: unresolved external symbol IMG_Load
+Tilemap.obj : error LNK2001: unresolved external symbol IMG_Load
+GameLoop.obj : error LNK2019: unresolved external symbol TTF_OpenFont referenced in function "public: void __cdecl TextRenderer::init(void)" (?init@TextRenderer@@QEAAXXZ)
+GameLoop.obj : error LNK2019: unresolved external symbol TTF_RenderText_Solid referenced in function "public: void __cdecl TextRenderer::init(void)" (?init@TextRenderer@@QEAAXXZ)
 .\SDL2-2.0.10\lib\x86\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 .\SDL2-2.0.10\lib\x86\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 .\SDL2-2.0.10\lib\x86\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\S18125008\Desktop\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima-master\C++ assignment\C++ GameLoop\x64\Debug\C++ GameLoop.exe : fatal error LNK1120: 14 unresolved externals
+D:\C++ assignment\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\x64\Debug\C++ GameLoop.exe : fatal error LNK1120: 17 unresolved externals
