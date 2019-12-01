@@ -12,7 +12,6 @@ bool GameLoop::init()
 	{
 		keydown[i] = false;
 	}
-
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		std::cerr << "Could not initialise SDL: " << SDL_GetError();
 		return false;
@@ -20,7 +19,7 @@ bool GameLoop::init()
 	window = SDL_CreateWindow(
 		"2D Shooter",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		800, 800,
+		800, 832,
 		SDL_WINDOW_SHOWN
 	);
 
@@ -35,6 +34,8 @@ bool GameLoop::init()
 		std::cout << "Error creating renderer:" << SDL_GetError() << std::endl;
 		return false;
 	}
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
 	//process initialisation for game classes here
 

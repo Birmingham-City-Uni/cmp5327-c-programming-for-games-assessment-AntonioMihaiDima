@@ -10,31 +10,23 @@ using namespace std;
 
 
 
-class TextRenderer 
+class TextRenderer
 {
 public:
 
 	TextRenderer(SDL_Renderer* renderer, EnemyManager * enemymanager) : renderer(renderer), enemymanager(enemymanager) {};
 	void init()
-	{
-
-		TTF_Init();
+	{	
+		if (TTF_Init() == -1)
+			cout << "oops";
 		font = TTF_OpenFont("arial.ttf", 25);
 		White = { 255, 255, 255 };
-
-
-
-		if (Score == NULL)
-			cout << "oops";
-
-
-	}
+		//For some reason if i take this cout out the compiler crashes.
+		cout << endl;
+	}	
 
 	void draw()
 	{
-
-
-
 		stringstream ScoreString;
 		ScoreString << "Score : ";
 		if (enemymanager->Scoregained)
@@ -42,16 +34,16 @@ public:
 			scorenum += 100;
 			enemymanager->Scoregained = false;
 		}
-		ScoreString << scorenum;
+		auto scorenumstring = to_string(scorenum);
+		ScoreString << scorenumstring;
 		surfaceMessage = TTF_RenderText_Solid(font, ScoreString.str().c_str(), White);
 		Score = SDL_CreateTextureFromSurface(this->renderer, this->surfaceMessage);
 
-		SDL_Rect ScoreRect = { 32, 0 , 75, 50 };
+		SDL_Rect ScoreRect = { 32, 0 , 100, 50 };
 		SDL_RenderCopy(this->renderer, Score, NULL, &ScoreRect);
 		//Use those in order not to have leaks in memory.
 		SDL_DestroyTexture(Score);
-		SDL_FreeSurface(surfaceMessage);
-		
+		SDL_FreeSurface(surfaceMessage);		
 	}
 
 	void clean()

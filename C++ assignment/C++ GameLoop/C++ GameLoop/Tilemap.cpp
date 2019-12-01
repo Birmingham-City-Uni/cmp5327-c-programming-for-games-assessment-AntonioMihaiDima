@@ -417,7 +417,7 @@ void Tilemap::draw()
 			
 		}
 
-	for (int i = 25; i < 40; i++)
+	/*for (int i = 25; i < 40; i++)
 		for (int j = 0; j < 25; j++)
 		{
 			SDL_Rect secondposition = { j * 32, i * 32 + DownwardsMovementValue, width, height };
@@ -434,6 +434,7 @@ void Tilemap::draw()
 				SDL_RenderCopy(this->renderer, WaterTex, NULL, &secondposition);
 
 		}
+		*/
 
 	for (int i = 49; i > 39; i--)
 	{

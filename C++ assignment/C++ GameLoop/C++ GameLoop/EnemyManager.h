@@ -33,23 +33,16 @@ public:
 	bool Scoregained = false;
 
 	void init()
-	{
-		SDL_Surface * Enemy1Surface = IMG_Load("debug/Enemy1.png");
+	{	Enemy1Surface = IMG_Load("debug/Enemy1.png");
 		Enemy1 = SDL_CreateTextureFromSurface(this->renderer, Enemy1Surface);
 		SDL_FreeSurface(Enemy1Surface);
 
-		/*SDL_Surface * Enemy2Surface = IMG_Load("debug/Enemy2.png");
-		Enemy2 = SDL_CreateTextureFromSurface(this->renderer, Enemy2Surface);
-		SDL_FreeSurface(Enemy2Surface);
+		SDL_Surface * HealthSurface = IMG_Load("debug/health.png");
+		HealthBar = SDL_CreateTextureFromSurface(this->renderer, HealthSurface);
+		SDL_FreeSurface(HealthSurface);
+		SDL_Surface * NoHealthSurface = IMG_Load("debug/nohealth.png");
+		NoHealthBar = SDL_CreateTextureFromSurface(this->renderer, NoHealthSurface);
 
-		SDL_Surface * Enemy3Surface = IMG_Load("debug/Enemy3.png");
-		Enemy3 = SDL_CreateTextureFromSurface(this->renderer, Enemy3Surface);
-		SDL_FreeSurface(Enemy3Surface);
-
-		SDL_Surface * Enemy4Surface = IMG_Load("debug/Enemy4.png");
-		Enemy4 = SDL_CreateTextureFromSurface(this->renderer, Enemy4Surface);
-		SDL_FreeSurface(Enemy4Surface);
-		*/
 
 		srand(time(0));
 
@@ -65,7 +58,6 @@ public:
 			{
 				spawnpicker = rand() % 23 + 1;
 				enemies.push_back(Enemy{ 0, float(spawnpicker * 32) , angle, 0.0f });
-				//typeofenemy.push_back(rand() % 4);
 				enemycount++;
 				lastSpawn = SDL_GetTicks();
 				cout << SDL_GetTicks() << " ";
@@ -93,7 +85,6 @@ public:
 					}
 					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
 					{
-						//e.x -= 32;
 						e.directionpicked = 1;
 						e.bottomcollision = false;
 						e.rotation = 270;
@@ -101,14 +92,12 @@ public:
 					}
 					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0)
 					{
-						//e.x -= 32;
 						e.directionpicked = 2;
 						e.bottomcollision = false;
 						e.rotation = 90;
 					}
 					else
 					{
-						//e.x -= 32;
 						e.directionpicked = 3;
 						e.bottomcollision = true;
 						e.rotation = 180;
@@ -158,6 +147,12 @@ public:
 			{
 				enemiesremaining--;
 				cout << enemiesremaining << " ";
+				if (!EnemyHit)
+				healthsubstract += 80;
+				else
+				{
+					EnemyHit = false;
+				}
 			}
 		}
 
@@ -197,6 +192,7 @@ public:
 					SDL_Rect nullRect;
 					if (SDL_IntersectRect(&bulletrect, &dest, &nullRect))
 					{
+						EnemyHit = true;
 						Scoregained = true;
 						e.x = 800;
 						b.distance = 1501;
@@ -222,6 +218,8 @@ public:
 
 
 		}
+		SDL_Rect HealthRect = { 0, 800, 80 * 10 - healthsubstract, 32 };
+		SDL_RenderCopy(this->renderer, HealthBar, NULL, &HealthRect);
 
 	}
 
@@ -230,13 +228,9 @@ private:
 	vector<Enemy> enemies;
 	BulletManager * bulletmanager;
 	SDL_Texture * Enemy1;
-	SDL_Texture * Enemy2;
-	SDL_Texture * Enemy3;
-	SDL_Texture * Enemy4;
 	SDL_Surface * Enemy1Surface;
-	SDL_Surface * Enemy2Surface;
-	SDL_Surface * Enemy3Surface;
-	SDL_Surface * Enemy4Surface;
+	SDL_Texture * HealthBar;
+	SDL_Texture * NoHealthBar;
 
 	const int SpawnMs = 4000;
 	unsigned int lastSpawn = 0;
@@ -248,6 +242,8 @@ private:
 	int distancetravelled = 0;
 	int enemytype = 0;
 	int enemynumber = 0;
+	int healthsubstract = 0;
+	bool EnemyHit = false;
 
 
 
