@@ -11,6 +11,8 @@
 class BulletManager;
 using namespace std;
 
+
+
 struct Enemy {
 
 	float x, y, rotation, distance;
@@ -24,11 +26,11 @@ struct Enemy {
 
 class EnemyManager {
 
-
 public:
 	EnemyManager(SDL_Renderer * renderer, BulletManager* bulletmanager) : renderer(renderer), bulletmanager(bulletmanager) {}
 
 	int enemiesremaining = 6;
+	bool Scoregained = false;
 
 	void init()
 	{
@@ -186,6 +188,22 @@ public:
 			{
 				bulletmanager->player->NoMoreEnemies = false;
 			}
+
+			for (auto &e : enemies) {
+				for (auto &b : bulletmanager->bullets)
+				{
+					SDL_Rect dest = { e.y, e.x, 32, 32 };
+					SDL_Rect bulletrect = { b.x, b.y, 11, 11 };
+					SDL_Rect nullRect;
+					if (SDL_IntersectRect(&bulletrect, &dest, &nullRect))
+					{
+						Scoregained = true;
+						e.x = 800;
+						b.distance = 1501;
+
+					}
+				}
+			}
 			
 
 	}
@@ -203,8 +221,6 @@ public:
 
 
 
-			//e.x += sin(e.rotation * PI / 180.0f);
-			//e.y -= cos(e.rotation * PI / 180.0f);
 		}
 
 	}
@@ -232,6 +248,7 @@ private:
 	int distancetravelled = 0;
 	int enemytype = 0;
 	int enemynumber = 0;
+
 
 
 

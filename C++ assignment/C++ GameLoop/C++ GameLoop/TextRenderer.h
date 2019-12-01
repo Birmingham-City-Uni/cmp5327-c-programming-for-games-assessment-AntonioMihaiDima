@@ -28,15 +28,21 @@ public:
 			cout << "oops";
 
 
-
 	}
 
 	void draw()
 	{
+
+
+
 		stringstream ScoreString;
 		ScoreString << "Score : ";
-		ScoreString << enemymanager->enemiesremaining;
-
+		if (enemymanager->Scoregained)
+		{
+			scorenum += 100;
+			enemymanager->Scoregained = false;
+		}
+		ScoreString << scorenum;
 		surfaceMessage = TTF_RenderText_Solid(font, ScoreString.str().c_str(), White);
 		Score = SDL_CreateTextureFromSurface(this->renderer, this->surfaceMessage);
 
@@ -45,6 +51,7 @@ public:
 		//Use those in order not to have leaks in memory.
 		SDL_DestroyTexture(Score);
 		SDL_FreeSurface(surfaceMessage);
+		
 	}
 
 	void clean()
