@@ -42,6 +42,7 @@ public:
 		SDL_FreeSurface(HealthSurface);
 		SDL_Surface * NoHealthSurface = IMG_Load("debug/nohealth.png");
 		NoHealthBar = SDL_CreateTextureFromSurface(this->renderer, NoHealthSurface);
+		SDL_FreeSurface(NoHealthSurface);
 
 
 		srand(time(0));
@@ -218,8 +219,11 @@ public:
 
 
 		}
+		SDL_Rect NoHealthRect = { 0, 800, 800, 32 };
+		SDL_RenderCopy(this->renderer, NoHealthBar, NULL, &NoHealthRect);
 		SDL_Rect HealthRect = { 0, 800, 80 * 10 - healthsubstract, 32 };
 		SDL_RenderCopy(this->renderer, HealthBar, NULL, &HealthRect);
+
 
 	}
 

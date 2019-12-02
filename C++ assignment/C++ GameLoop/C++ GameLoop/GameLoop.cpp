@@ -12,6 +12,7 @@ bool GameLoop::init()
 	{
 		keydown[i] = false;
 	}
+	TTF_Init();
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		std::cerr << "Could not initialise SDL: " << SDL_GetError();
 		return false;
@@ -50,9 +51,6 @@ bool GameLoop::init()
 	bm->init();
 	em->init();
 	textRenderer->init();
-	
-
-
 }
 
 bool GameLoop::processInput()
