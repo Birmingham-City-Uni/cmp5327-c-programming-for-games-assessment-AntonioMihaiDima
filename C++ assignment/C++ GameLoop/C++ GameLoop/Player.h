@@ -11,6 +11,7 @@ public:
 	Player(SDL_Renderer*, Tilemap*);
 
 	bool DestroyEnemy = false;
+	bool EndGame = false;
 	void init();
 	void processInput(SDL_Event e);
 	void update();

@@ -101,97 +101,98 @@ void Player::processInput(SDL_Event e)
 
 void Player::update()
 {
-
-	//Here we just make sure the player can't control the player sprite until the map is scrolled.
-	if (NoMoreEnemies == true)
+	if (EndGame == false)
 	{
-		upmovement = false;
-		downmovement = false;
-		leftmovement = false;
-		rightmovement = false;
-	}
-
-
-	for (int i = 0; i < 26; i++)
-		for (int j = 0; j < 26; j++)
+		//Here we just make sure the player can't control the player sprite until the map is scrolled.
+		if (NoMoreEnemies == true)
 		{
-			obstacles[i][j] = tilemap->tilemaparray[i][j];
+			upmovement = false;
+			downmovement = false;
+			leftmovement = false;
+			rightmovement = false;
 		}
 
 
+		for (int i = 0; i < 26; i++)
+			for (int j = 0; j < 26; j++)
+			{
+				obstacles[i][j] = tilemap->tilemaparray[i][j];
+			}
 
 
-	xslot = xpos / 32 + 1;
-	yslot = ypos / 32 + 1;
 
-	uppercollision = false;
-	bottomcollision = false;
-	leftcollision = false;
-	rightcollision = false;
 
-	if (NoMoreEnemies == false)
-	{
-		if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
+		xslot = xpos / 32 + 1;
+		yslot = ypos / 32 + 1;
+
+		uppercollision = false;
+		bottomcollision = false;
+		leftcollision = false;
+		rightcollision = false;
+
+		if (NoMoreEnemies == false)
 		{
-			if (angle == 0)
+			if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
 			{
-				uppercollision = true;
-				xpos = (xslot) * 32 + 2;
-			}
-			if (angle == 90)
-			{
-				rightcollision = true;
-				ypos = (yslot - 1) * 32 - 2;
-				std::cout << "Collision" << std::endl;
-			}
+				if (angle == 0)
+				{
+					uppercollision = true;
+					xpos = (xslot) * 32 + 2;
+				}
+				if (angle == 90)
+				{
+					rightcollision = true;
+					ypos = (yslot - 1) * 32 - 2;
+					std::cout << "Collision" << std::endl;
+				}
 
+			}
+			if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
+			{
+				if (angle == 0)
+				{
+					uppercollision = true;
+					xpos = (xslot) * 32 + 2;
+				}
+				if (angle == 270)
+				{
+					leftcollision = true;
+					ypos = (yslot) * 32 + 2;
+				}
+			}
+			if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
+			{
+				if (angle == 180)
+				{
+					bottomcollision = true;
+					xpos = (xslot - 1) * 32 - 2;
+				}
+				if (angle == 90)
+				{
+					rightcollision = true;
+					ypos = (yslot - 1) * 32 - 2;
+				}
+			}
+			if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
+			{
+				if (angle == 180)
+				{
+					bottomcollision = true;
+					xpos = (xslot - 1) * 32 - 2;
+				}
+				if (angle == 270)
+				{
+					leftcollision = true;
+					ypos = (yslot) * 32 + 2;
+				}
+			}
 		}
-		if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
-		{
-			if (angle == 0)
-			{
-				uppercollision = true;
-				xpos = (xslot) * 32 + 2;
-			}
-			if (angle == 270)
-			{
-				leftcollision = true;
-				ypos = (yslot) * 32 + 2;
-			}
-		}
-		if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
-		{
-			if (angle == 180)
-			{
-				bottomcollision = true;
-				xpos = (xslot - 1) * 32 - 2;
-			}
-			if (angle == 90)
-			{
-				rightcollision = true;
-				ypos = (yslot - 1) * 32 - 2;
-			}
-		}
-		if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
-		{
-			if (angle == 180)
-			{
-				bottomcollision = true;
-				xpos = (xslot - 1) * 32 - 2;
-			}
-			if (angle == 270)
-			{
-				leftcollision = true;
-				ypos = (yslot) * 32 + 2;
-			}
-		}
-	}
 
-	if (NoMoreEnemies == true)
-	{
+		if (NoMoreEnemies == true)
+		{
 
-		//Here we check if there's any offset from a perfect 32 division. We use this to prepare our player for down movement.
-		if (perfectxpos == false)
+			//Here we check if there's any offset from a perfect 32 division. We use this to prepare our player for down movement.
+			if (perfectxpos == false)
 			{
 				ypos = ypos / 32 * 32;
 				xpos = xpos / 32 * 32;
@@ -201,174 +202,175 @@ void Player::update()
 
 
 
-		if (xpos < 768)
-		{
-			if (distancetravelled < 32)
+			if (xpos < 768)
 			{
-				if (directiontobepicked == false)
+				if (distancetravelled < 32)
 				{
-					if ((obstacles[int(xpos / 32) + 1][int(ypos / 32)] == 0) && (bottomcollision == false))
+					if (directiontobepicked == false)
 					{
-						directionpicked = 0;
-						angle = 180;
+						if ((obstacles[int(xpos / 32) + 1][int(ypos / 32)] == 0) && (bottomcollision == false))
+						{
+							directionpicked = 0;
+							angle = 180;
+						}
+						else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+						{
+							directionpicked = 1;
+							bottomcollision = false;
+							angle = 90;
+						}
+						else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+						{
+							directionpicked = 2;
+							bottomcollision = false;
+							angle = 270;
+						}
+						else
+						{
+							directionpicked = 3;
+							bottomcollision = true;
+							angle = 0;
+						}
+
+						directiontobepicked = true;
+
 					}
-					else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+					if (directionpicked == 0)
 					{
-						directionpicked = 1;
-						bottomcollision = false;
-						angle = 90;
+						xpos += 2;
 					}
-					else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+					if (directionpicked == 1)
 					{
-						directionpicked = 2;
-						bottomcollision = false;
-						angle = 270;
+						ypos += 2;
 					}
-					else
+					if (directionpicked == 2)
 					{
-						directionpicked = 3;
-						bottomcollision = true;
-						angle = 0;
+						ypos -= 2;
+					}
+					if (directionpicked == 3)
+					{
+						xpos -= 2;
 					}
 
-					directiontobepicked = true;
+
 
 				}
-				if (directionpicked == 0)
+
+				distancetravelled += 2;
+
+
+				if (distancetravelled == 32)
 				{
-					xpos += 2;
-				}
-				if (directionpicked == 1)
-				{
-					ypos += 2;
-				}
-				if (directionpicked == 2)
-				{
-					ypos -= 2;
-				}
-				if (directionpicked == 3)
-				{
-					xpos -= 2;
+					directiontobepicked = false;
+					distancetravelled = 0;
 				}
 
 
 
 			}
+			//Now the player is at the bottom position
 
-			distancetravelled += 2;
-
-
-			if (distancetravelled == 32)
+			if (xpos >= 768)
 			{
-				directiontobepicked = false;
-				distancetravelled = 0;
+				tilemap->WaveComplete = true;
 			}
 
-
-
-		}
-		//Now the player is at the bottom position
-		
-		if (xpos >= 768)
-		{
-			tilemap->WaveComplete = true;
-		}
-
-		if (tilemap->WaveComplete == true)
-		{
-			if (distancetravelled < 32)
+			if (tilemap->WaveComplete == true)
 			{
-				if (directiontobepicked == false)
+				if (distancetravelled < 32)
 				{
-					if ((obstacles[int(xpos / 32) - 1][int(ypos / 32)] == 0) && (uppercollision == false))
+					if (directiontobepicked == false)
 					{
-						angle = 0;
-						tilemap->uppercollision = false;
-						directionpicked = 0;
+						if ((obstacles[int(xpos / 32) - 1][int(ypos / 32)] == 0) && (uppercollision == false))
+						{
+							angle = 0;
+							tilemap->uppercollision = false;
+							directionpicked = 0;
+						}
+						else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+						{
+							angle = 90;
+							tilemap->uppercollision = true;
+							directionpicked = 1;
+							uppercollision = true;
+						}
+						else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+						{
+							angle = 270;
+							tilemap->uppercollision = true;
+							directionpicked = 2;
+							uppercollision = true;
+						}
+						else
+						{
+							angle = 180;
+							tilemap->uppercollision = true;
+							directionpicked = 3;
+							uppercollision = true;
+						}
+						directiontobepicked = true;
 					}
-					else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+					if (directionpicked == 0)
 					{
-						angle = 90;
-						tilemap->uppercollision = true;
-						directionpicked = 1;
-						uppercollision = true;					
+						xpos -= 2;
 					}
-					else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+					if (directionpicked == 1)
 					{
-						angle = 270;
-						tilemap->uppercollision = true;
-						directionpicked = 2;
-						uppercollision = true;
+						ypos += 2;
 					}
-					else
+					if (directionpicked == 2)
 					{
-						angle = 180;
-						tilemap->uppercollision = true;
-						directionpicked = 3;
-						uppercollision = true;
+						ypos -= 2;
 					}
-					directiontobepicked = true;
+					if (directionpicked == 3)
+					{
+						xpos += 2;
+					}
 				}
-				if (directionpicked == 0)
+				distancetravelled += 2;
+
+
+				if (distancetravelled == 32)
 				{
-					xpos -= 2;
-				}
-				if (directionpicked == 1)
-				{
-					ypos += 2;
-				}
-				if (directionpicked == 2)
-				{
-					ypos -= 2;
-				}
-				if (directionpicked == 3)
-				{
-					xpos += 2;
+					directiontobepicked = false;
+					distancetravelled = 0;
 				}
 			}
-			distancetravelled += 2;
+		}
 
 
-			if (distancetravelled == 32)
+		//if ((upmovement == true) && (uppercollision == false))
+		if (upmovement && !uppercollision)
+		{
+
 			{
-				directiontobepicked = false;
-				distancetravelled = 0;
+				xpos -= 2;
+				angle = 0;
 			}
 		}
-	}
-
-
-	//if ((upmovement == true) && (uppercollision == false))
-	if (upmovement && !uppercollision)
-	{
-
+		if (downmovement && !bottomcollision)
 		{
-			xpos -= 2;
-			angle = 0;
+
+			{
+				xpos += 2;
+				angle = 180;
+			}
 		}
-	}
-	if (downmovement && !bottomcollision)
-	{
-
+		if (leftmovement && !leftcollision)
 		{
-			xpos += 2;
-			angle = 180;
+
+			{
+				ypos -= 2;
+				angle = 270;
+			}
 		}
-	}
-	if (leftmovement && !leftcollision)
-	{
-
+		if (rightmovement && !rightcollision)
 		{
-			ypos -= 2;
-			angle = 270;
-		}
-	}
-	if (rightmovement && !rightcollision)
-	{
 
-		{
-			ypos += 2;
-			angle = 90;
+			{
+				ypos += 2;
+				angle = 90;
+			}
 		}
 	}
 }

@@ -25,6 +25,7 @@ struct Enemy {
 
 
 class EnemyManager {
+	friend class TextRenderer;
 
 public:
 	EnemyManager(SDL_Renderer * renderer, BulletManager* bulletmanager) : renderer(renderer), bulletmanager(bulletmanager) {}
@@ -54,115 +55,122 @@ public:
 
 	void update()
 	{
-		if (enemycount < MaxEnemies)
-			if (SDL_GetTicks() - lastSpawn > SpawnMs && distancetravelled == 0)
-			{
-				spawnpicker = rand() % 23 + 1;
-				enemies.push_back(Enemy{ 0, float(spawnpicker * 32) , angle, 0.0f });
-				enemycount++;
-				lastSpawn = SDL_GetTicks();
-				cout << SDL_GetTicks() << " ";
-			}
-
-
-
-
-
-		if (distancetravelled < 32)
+		if (bulletmanager->player->EndGame == false)
 		{
-			for (auto &e : enemies)
-			{
-
-
-
-				if (e.directiontobepicked == false)
+			if (enemycount < MaxEnemies)
+				if (SDL_GetTicks() - lastSpawn > SpawnMs && distancetravelled == 0)
 				{
-					if ((bulletmanager->player->obstacles[int(e.x / 32) + 1][int(e.y / 32)] == 0) && (e.bottomcollision == false))
-					{
-
-						e.directionpicked = 0;
-						e.rotation = 0;
-
-					}
-					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
-					{
-						e.directionpicked = 1;
-						e.bottomcollision = false;
-						e.rotation = 270;
-
-					}
-					else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0)
-					{
-						e.directionpicked = 2;
-						e.bottomcollision = false;
-						e.rotation = 90;
-					}
-					else
-					{
-						e.directionpicked = 3;
-						e.bottomcollision = true;
-						e.rotation = 180;
-					}
-
-					e.directiontobepicked = true;
-				}
-
-
-				if (e.directionpicked == 0)
-				{
-					e.x += 2;
-				}
-				if (e.directionpicked == 1)
-				{
-					e.y += 2;
-				}
-				if (e.directionpicked == 2)
-				{
-					e.y -= 2;
-				}
-				if (e.directionpicked == 3)
-				{
-					e.x -= 2;
+					spawnpicker = rand() % 23 + 1;
+					enemies.push_back(Enemy{ 0, float(spawnpicker * 32) , angle, 0.0f });
+					enemycount++;
+					lastSpawn = SDL_GetTicks();
+					cout << SDL_GetTicks() << " ";
 				}
 
 
 
-			}
 
-			distancetravelled += 2;
 
-			if (distancetravelled == 32)
+			if (distancetravelled < 32)
 			{
 				for (auto &e : enemies)
 				{
-					e.directiontobepicked = false;
+
+
+
+					if (e.directiontobepicked == false)
+					{
+						if ((bulletmanager->player->obstacles[int(e.x / 32) + 1][int(e.y / 32)] == 0) && (e.bottomcollision == false))
+						{
+
+							e.directionpicked = 0;
+							e.rotation = 0;
+
+						}
+						else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
+						{
+							e.directionpicked = 1;
+							e.bottomcollision = false;
+							e.rotation = 270;
+
+						}
+						else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0)
+						{
+							e.directionpicked = 2;
+							e.bottomcollision = false;
+							e.rotation = 90;
+						}
+						else
+						{
+							e.directionpicked = 3;
+							e.bottomcollision = true;
+							e.rotation = 180;
+						}
+
+						e.directiontobepicked = true;
+					}
+
+
+					if (e.directionpicked == 0)
+					{
+						e.x += 2;
+					}
+					if (e.directionpicked == 1)
+					{
+						e.y += 2;
+					}
+					if (e.directionpicked == 2)
+					{
+						e.y -= 2;
+					}
+					if (e.directionpicked == 3)
+					{
+						e.x -= 2;
+					}
+
+
+
 				}
-				distancetravelled = 0;
-			}
 
-		}
+				distancetravelled += 2;
 
-		for (auto &e : enemies)
-		{
-			if (e.x > 768)
-			{
-				enemiesremaining--;
-				cout << enemiesremaining << " ";
-				if (!EnemyHit)
-				healthsubstract += 80;
-				else
+				if (distancetravelled == 32)
 				{
-					EnemyHit = false;
+					for (auto &e : enemies)
+					{
+						e.directiontobepicked = false;
+					}
+					distancetravelled = 0;
+				}
+
+			}
+
+			for (auto &e : enemies)
+			{
+				if (e.x > 768)
+				{
+					enemiesremaining--;
+					cout << enemiesremaining << " ";
+					if (!EnemyHit)
+						healthsubstract += 80;
+					else
+					{
+						EnemyHit = false;
+					}
 				}
 			}
-		}
+
+			if (healthsubstract == 800)
+			{
+				bulletmanager->player->EndGame = true;
+			}
 
 
-		auto remove = std::remove_if(enemies.begin(), enemies.end(), [](const Enemy& e) { return e.x > 768; });
-		
+			auto remove = std::remove_if(enemies.begin(), enemies.end(), [](const Enemy& e) { return e.x > 768; });
+
 			enemies.erase(remove, enemies.end());
 
-			if(bulletmanager->tilemaparraypointer->mapscrolled)
+			if (bulletmanager->tilemaparraypointer->mapscrolled)
 			{
 				MaxEnemies += 2;
 				enemiesremaining = MaxEnemies;
@@ -179,7 +187,7 @@ public:
 			{
 				bulletmanager->player->NoMoreEnemies = true;
 			}
-			
+
 			else if (enemiesremaining > 0)
 			{
 				bulletmanager->player->NoMoreEnemies = false;
@@ -201,8 +209,8 @@ public:
 					}
 				}
 			}
-			
 
+		}
 	}
 
 
@@ -227,7 +235,7 @@ public:
 
 	}
 
-private:
+protected:
 	SDL_Renderer * renderer;
 	vector<Enemy> enemies;
 	BulletManager * bulletmanager;

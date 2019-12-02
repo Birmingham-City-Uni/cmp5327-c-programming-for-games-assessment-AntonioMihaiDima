@@ -12,7 +12,7 @@
 #include "Tilemap.h"
 
 
-//int temparray[25][25];
+
 
 
 #define PI 3.14159265
@@ -40,41 +40,47 @@ public:
 	}
 
 	void processInput(bool * keydown) {
-		if (keydown[SDL_SCANCODE_SPACE]) {
-			if (SDL_GetTicks() - lastShot > SHOOT_TIMER_MS) {
-				if (int(player->getAngle()) == 0)
-				{
-					bullets.push_back(Bullet{ player->getypos() + 18, player->getxpos(), player->getAngle(), 0.0f });
-				}
-				if (int(player->getAngle()) == 270)
-				{
-					bullets.push_back(Bullet{ player->getypos(), player->getxpos() + 5, player->getAngle(), 0.0f });
-				}
-				if (int(player->getAngle()) == 180)
-				{
-					bullets.push_back(Bullet{ player->getypos() + 5, player->getxpos() + 20, player->getAngle(), 0.0f });
-				}
-				if (int(player->getAngle()) == 90)
-				{
-					bullets.push_back(Bullet{ player->getypos() + 20, player->getxpos() + 16, player->getAngle(), 0.0f });
-				}
+		if (player->EndGame == false)
+		{
+			if (player->NoMoreEnemies == false)
+				if (keydown[SDL_SCANCODE_SPACE]) {
+					if (SDL_GetTicks() - lastShot > SHOOT_TIMER_MS) {
+						if (int(player->getAngle()) == 0)
+						{
+							bullets.push_back(Bullet{ player->getypos() + 18, player->getxpos(), player->getAngle(), 0.0f });
+						}
+						if (int(player->getAngle()) == 270)
+						{
+							bullets.push_back(Bullet{ player->getypos(), player->getxpos() + 5, player->getAngle(), 0.0f });
+						}
+						if (int(player->getAngle()) == 180)
+						{
+							bullets.push_back(Bullet{ player->getypos() + 5, player->getxpos() + 20, player->getAngle(), 0.0f });
+						}
+						if (int(player->getAngle()) == 90)
+						{
+							bullets.push_back(Bullet{ player->getypos() + 20, player->getxpos() + 16, player->getAngle(), 0.0f });
+						}
 
-				lastShot = SDL_GetTicks();
-			}
+						lastShot = SDL_GetTicks();
+					}
+				}
 		}
 	}
 
 	void update() {
-		for (auto &b : bullets) {
-			b.x += sin(b.rotation * PI / 180.0f)* BULLET_VELOCITY;
-			b.y -= cos(b.rotation * PI / 180.0f)* BULLET_VELOCITY;
-			b.distance += BULLET_VELOCITY;
-		}
-		//remove bullet after they have travelled approx 1500 pixels. this code could be called less frequently for efficiency
-		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullet& b) { return b.distance > 1500; });
-		bullets.erase(remove, bullets.end());
+		
+	
+			for (auto &b : bullets) {
+				b.x += sin(b.rotation * PI / 180.0f)* BULLET_VELOCITY;
+				b.y -= cos(b.rotation * PI / 180.0f)* BULLET_VELOCITY;
+				b.distance += BULLET_VELOCITY;
+			}
+			//remove bullet after they have travelled approx 1500 pixels. this code could be called less frequently for efficiency
+			auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullet& b) { return b.distance > 1500; });
+			bullets.erase(remove, bullets.end());
 
-
+		
 	}
 
 	void draw() {
