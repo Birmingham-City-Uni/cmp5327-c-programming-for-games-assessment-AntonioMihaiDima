@@ -43,10 +43,11 @@ public:
 			Score = SDL_CreateTextureFromSurface(this->renderer, this->surfaceMessage);
 			enemymanager->Scoregained = false;
 		}
-		if(enemymanager->bulletmanager->player->EndGame == true)
+		if((enemymanager->bulletmanager->player->EndGame == true)&&(!EfficiencyBool))
 		{
 			EndGameSurface = TTF_RenderText_Solid(font, "Game Over", { 255,255,255 });
 			EndGame = SDL_CreateTextureFromSurface(this->renderer, this->EndGameSurface);
+			EfficiencyBool = true;
 		}
 
 		SDL_Rect ScoreRect = { 32, 0 , 100, 50 };
@@ -63,6 +64,8 @@ public:
 		TTF_CloseFont(font);
 		SDL_DestroyTexture(Score);
 		SDL_FreeSurface(surfaceMessage);
+		SDL_DestroyTexture(EndGame);
+		SDL_FreeSurface(EndGameSurface);
 	}
 
 
@@ -76,6 +79,7 @@ private:
 	EnemyManager * enemymanager;
 	TTF_Font * font;
 	int scorenum = 0;
+	bool EfficiencyBool = false;
 
 
 
