@@ -64,7 +64,7 @@ public:
 					enemies.push_back(Enemy{ 0, float(spawnpicker * 32) , angle, 0.0f });
 					enemycount++;
 					lastSpawn = SDL_GetTicks();
-					cout << SDL_GetTicks() << " ";
+					//cout << SDL_GetTicks() << " ";
 				}
 
 
@@ -150,7 +150,7 @@ public:
 				if (e.x > 768)
 				{
 					enemiesremaining--;
-					cout << enemiesremaining << " ";
+					//cout << enemiesremaining << " ";
 					if (!EnemyHit)
 						healthsubstract += 80;
 					else

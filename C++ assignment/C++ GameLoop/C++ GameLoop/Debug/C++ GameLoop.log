@@ -1,1 +1,4 @@
-﻿  C++ GameLoop.vcxproj -> C:\Users\laptop\Documents\GitHub\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe
+﻿  Player.cpp
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(23): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(27): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  C++ GameLoop.vcxproj -> D:\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe

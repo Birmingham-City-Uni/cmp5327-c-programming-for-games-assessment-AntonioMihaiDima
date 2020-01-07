@@ -373,6 +373,11 @@ void Player::update()
 			}
 		}
 	}
+	//Have the player stay in the boundaries of the screen.
+	if (xpos <= 0)
+		xpos = xpos + 2;
+	if (xpos >= 770)
+		xpos = xpos - 2;
 }
 
 void Player::draw()
