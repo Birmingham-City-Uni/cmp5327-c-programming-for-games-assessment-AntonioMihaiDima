@@ -46,11 +46,13 @@ bool GameLoop::init()
 	bm = new BulletManager(this->renderer, this->player, this->tilemap);
 	em = new EnemyManager(this->renderer, this->bm);
 	textRenderer = new TextRenderer(this->renderer, this->em);
+	sound = new AudioManager();
 	tilemap->init();
 	player->init();
 	bm->init();
 	em->init();
 	textRenderer->init();
+	sound->PlayMusic();
 }
 
 bool GameLoop::processInput()
