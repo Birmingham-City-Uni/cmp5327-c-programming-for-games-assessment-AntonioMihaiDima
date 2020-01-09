@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include "BulletManager.h"
 #include "Time.h"
+#include <vector>
 
 
 #define PI 3.14159265
@@ -194,17 +195,17 @@ public:
 			}
 
 			for (auto &e : enemies) {
-				for (auto &b : bulletmanager->bullets)
+				if (bulletmanager->IsShooting)
 				{
 					SDL_Rect dest = { e.y, e.x, 32, 32 };
-					SDL_Rect bulletrect = { b.x, b.y, 11, 11 };
+					SDL_Rect bulletrect = { bulletmanager->x, bulletmanager->y, 11, 11 };
 					SDL_Rect nullRect;
 					if (SDL_IntersectRect(&bulletrect, &dest, &nullRect))
 					{
 						EnemyHit = true;
 						Scoregained = true;
 						e.x = 800;
-						b.distance = 1501;
+						bulletmanager->distance = 1501;
 
 					}
 				}

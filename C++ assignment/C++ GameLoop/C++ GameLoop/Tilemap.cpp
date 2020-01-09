@@ -486,5 +486,7 @@ void Tilemap::draw()
 void Tilemap::clean()
 {
 	SDL_DestroyTexture(this->MapTex);
+	SDL_DestroyTexture(this->WaterTex);
+	SDL_DestroyTexture(this->WallTex);
 }
 

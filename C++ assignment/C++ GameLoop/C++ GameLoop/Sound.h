@@ -2,6 +2,7 @@
 #pragma comment (lib,"winmm.lib")
 #include <Windows.h>
 #include <mmsystem.h>
+#include <mmeapi.h>
 #include <stdio.h>
 #include <string>
 #include <iostream>
