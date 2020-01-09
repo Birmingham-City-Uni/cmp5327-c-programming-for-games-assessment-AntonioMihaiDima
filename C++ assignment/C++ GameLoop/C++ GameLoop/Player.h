@@ -31,16 +31,6 @@ public:
 		return angle;
 	}
 
-	/*int getXSlot()
-	{
-		return xslot;
-	}
-	int getYSlot()
-	{
-		return yslot;
-	}
-	*/
-
 	int playerwidth = 32;
 	int playerheight = 32;
 	int obstacles[26][26];
@@ -50,6 +40,7 @@ public:
 	bool downmovement = false;
 	bool leftmovement = false;
 	bool rightmovement = false;
+	bool leftdirection = false;
 
 	int distancetravelled = 0;
 	bool directiontobepicked = false;
@@ -65,7 +56,6 @@ protected:
 	int ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
-	//SDL_Texture *enemytexture;
 	SDL_Renderer *renderer;
 	Tilemap * tilemap;
 };

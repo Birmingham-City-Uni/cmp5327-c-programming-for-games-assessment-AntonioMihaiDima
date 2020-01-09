@@ -212,9 +212,14 @@ void Player::update()
 						{
 							directionpicked = 0;
 							angle = 180;
+							leftdirection = false;
 						}
 						else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
 						{
+							if (directionpicked == 2)
+							{
+								leftdirection = true;
+							}
 							directionpicked = 1;
 							bottomcollision = false;
 							angle = 90;
@@ -232,6 +237,11 @@ void Player::update()
 							angle = 0;
 						}
 
+						if (leftdirection)
+						{
+							directionpicked = 2;
+							angle = 270;
+						}
 						directiontobepicked = true;
 
 					}
@@ -286,9 +296,14 @@ void Player::update()
 							angle = 0;
 							tilemap->uppercollision = false;
 							directionpicked = 0;
+							leftdirection = false;
 						}
 						else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
 						{
+							if (directionpicked == 2)
+							{
+								leftdirection = true;
+							}
 							angle = 90;
 							tilemap->uppercollision = true;
 							directionpicked = 1;
@@ -307,6 +322,12 @@ void Player::update()
 							tilemap->uppercollision = true;
 							directionpicked = 3;
 							uppercollision = true;
+						}
+
+						if (leftdirection)
+						{
+							directionpicked = 2;
+							angle = 270;
 						}
 						directiontobepicked = true;
 					}
@@ -339,7 +360,6 @@ void Player::update()
 		}
 
 
-		//if ((upmovement == true) && (uppercollision == false))
 		if (upmovement && !uppercollision)
 		{
 
@@ -389,13 +409,8 @@ void Player::draw()
 
 	SDL_Point * center = NULL;
 
-	//SDL_RenderCopyEx(this->renderer, this->enemytexture, 0, &enemyposition, angle, center, SDL_FLIP_NONE);
-
 	SDL_RenderCopyEx(this->renderer, this->playertexture, 0, &position, angle, center, SDL_FLIP_NONE);
 
-	//I put it here for testing, will move it in a better place later.
-	//if (DestroyEnemy == true)
-		//SDL_DestroyTexture(this->enemytexture);
 
 
 
@@ -406,5 +421,4 @@ void Player::draw()
 void Player::clean()
 {
 	SDL_DestroyTexture(this->playertexture);
-	//SDL_DestroyTexture(this->enemytexture);
 }

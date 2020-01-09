@@ -21,6 +21,7 @@ struct Enemy {
 	int directionpicked = 0;
 	bool bottomcollision = false;
 	bool directiontobepicked = false;
+	bool leftdirection = false;
 
 };
 
@@ -86,10 +87,14 @@ public:
 
 							e.directionpicked = 0;
 							e.rotation = 0;
-
+							e.leftdirection = false;
 						}
 						else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
 						{
+							if (e.directionpicked == 2)
+							{
+								e.leftdirection = true;
+							}
 							e.directionpicked = 1;
 							e.bottomcollision = false;
 							e.rotation = 270;
@@ -107,6 +112,13 @@ public:
 							e.bottomcollision = true;
 							e.rotation = 180;
 						}
+
+						if (e.leftdirection)
+						{
+							e.directionpicked = 2;
+							e.rotation = 90;
+						}
+
 
 						e.directiontobepicked = true;
 					}
