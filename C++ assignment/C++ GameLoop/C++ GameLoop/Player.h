@@ -12,6 +12,10 @@ public:
 
 	bool DestroyEnemy = false;
 	bool EndGame = false;
+	int BulletNumber = 7;
+	bool Reloading = false;
+	float ReloadTimer = 0;
+
 	void init();
 	void processInput(SDL_Event e);
 	void update();
@@ -47,6 +51,7 @@ public:
 	int directionpicked;
 	bool perfectxpos = false;
 
+
 protected:
 
 	int xslot;
@@ -56,6 +61,12 @@ protected:
 	int ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
+	SDL_Texture * PlayerReload;
+	SDL_Texture * Bullet;
+	SDL_Texture * BulletAnimated;
+	float BulletRotation = 270;
 	SDL_Renderer *renderer;
 	Tilemap * tilemap;
+
+	int AnimationNumber = 1;
 };

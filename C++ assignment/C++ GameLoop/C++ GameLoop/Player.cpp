@@ -29,17 +29,17 @@ void Player::init()
 	this->playertexture = SDL_CreateTextureFromSurface(this->renderer, surface);
 	SDL_FreeSurface(surface);
 
-/*	SDL_Surface * enemysurface = IMG_Load("debug/EnemyTexture.png");
-	this->enemytexture = SDL_CreateTextureFromSurface(this->renderer, enemysurface);
-	SDL_FreeSurface(enemysurface);
-	*/
+	SDL_Surface * surface2 = IMG_Load("debug/BulletTexture.png");
+	this->Bullet = SDL_CreateTextureFromSurface(this->renderer, surface2);
+	SDL_FreeSurface(surface2);
 
+	SDL_Surface * surface3 = IMG_Load("debug/BulletTextureAnimated.png");
+	this->BulletAnimated = SDL_CreateTextureFromSurface(this->renderer, surface3);
+	SDL_FreeSurface(surface3);
 
-
-
-	//obstacles[xslot][yslot] = 3;
-
-
+	SDL_Surface * surface4 = IMG_Load("debug/PlayerReload.png");
+	this->PlayerReload = SDL_CreateTextureFromSurface(this->renderer, surface4);
+	SDL_FreeSurface(surface4);
 }
 
 void Player::processInput(SDL_Event e)
@@ -396,24 +396,68 @@ void Player::update()
 	//Have the player stay in the boundaries of the screen.
 	if (xpos <= 0)
 		xpos = xpos + 2;
-	if (xpos >= 770)
+	if (xpos >= 768)
 		xpos = xpos - 2;
+
+	//Bullet animation.
+	if (SDL_GetTicks() % 1000 <= 500)
+	{
+		AnimationNumber = 1;
+	}
+
+	if (SDL_GetTicks() % 1000 > 500)
+	{
+		AnimationNumber = 2;
+	}
+	if (BulletNumber == 0)
+	{
+		if (SDL_GetTicks() - ReloadTimer > 1250)
+		{
+			ReloadTimer = SDL_GetTicks();
+			if (Reloading)
+			{
+				Reloading = false;
+				BulletNumber = 7;
+			}
+			else
+			{
+				Reloading = true;
+			}
+		}
+
+
+	}
 }
 
 void Player::draw()
 {
-	SDL_Rect position = { ypos, xpos, playerwidth, playerheight };
-	SDL_Rect enemyposition = { 64, 0, 32, 32 };
 
+	
+		SDL_Rect position = { ypos, xpos, playerwidth, playerheight };
 
+		SDL_Point * center = NULL;
 
-	SDL_Point * center = NULL;
+		if (!Reloading)
+		SDL_RenderCopyEx(this->renderer, this->playertexture, 0, &position, angle, center, SDL_FLIP_NONE);
+		
+		if (Reloading)
+		SDL_RenderCopyEx(this->renderer, this->PlayerReload, 0, &position, angle, center, SDL_FLIP_NONE);
+	
 
-	SDL_RenderCopyEx(this->renderer, this->playertexture, 0, &position, angle, center, SDL_FLIP_NONE);
+	for (int j = 23; j > 23 - BulletNumber; j --)
+	{
+		if (AnimationNumber == 1)
+		{
+			SDL_Rect BulletRect = { 24 * 32, j * 32, 32, 32 };
+			SDL_RenderCopyEx(this->renderer, this->Bullet, 0, &BulletRect, BulletRotation, center, SDL_FLIP_NONE);
+		}
 
-
-
-
+		if (AnimationNumber == 2)
+		{
+			SDL_Rect BulletRect = { 24 * 32, j * 32, 32, 32 };
+			SDL_RenderCopyEx(this->renderer, this->BulletAnimated, 0, &BulletRect, BulletRotation, center, SDL_FLIP_NONE);
+		}
+	}
 
 
 }
@@ -421,4 +465,7 @@ void Player::draw()
 void Player::clean()
 {
 	SDL_DestroyTexture(this->playertexture);
+	SDL_DestroyTexture(this->Bullet);
+	SDL_DestroyTexture(this->BulletAnimated);
+	SDL_DestroyTexture(this->PlayerReload);
 }

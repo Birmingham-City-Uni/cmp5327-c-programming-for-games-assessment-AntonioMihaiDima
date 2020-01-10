@@ -36,7 +36,7 @@ public:
 	void processInput(bool * keydown) {
 		if (player->EndGame == false)
 		{
-			if (player->NoMoreEnemies == false)
+			if ((player->NoMoreEnemies == false) && (player->Reloading == false))
 				if (keydown[SDL_SCANCODE_SPACE]) {
 					if (SDL_GetTicks() - lastShot > SHOOT_TIMER_MS) {
 						if (int(player->getAngle()) == 0)
@@ -69,6 +69,7 @@ public:
 						}
 						IsShooting = true;
 						lastShot = SDL_GetTicks();
+						player->BulletNumber -= 1;
 					}
 				}
 		}

@@ -232,7 +232,7 @@ public:
 		{
 			SDL_Point center = { 5, 5 };
 
-			SDL_Rect dest = { e.y, e.x, 32, 32 };
+			SDL_Rect dest = { e.y, e.x, 30, 30 };
 
 			SDL_RenderCopyEx(renderer, Enemy1, 0, &dest, e.rotation, &center, SDL_FLIP_NONE);
 
