@@ -8,12 +8,12 @@ d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c+
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(95): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(51): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(63): warning C4018: '>': signed/unsigned mismatch
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(211): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(211): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(212): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(212): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(213): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(213): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(236): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(236): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(235): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(235): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   GameLoop.cpp
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(23): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(27): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
@@ -24,15 +24,12 @@ d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c+
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\bulletmanager.h(95): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(51): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(63): warning C4018: '>': signed/unsigned mismatch
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(211): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(211): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(212): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(212): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(213): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(213): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(236): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(236): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Player.cpp
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(23): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\player.h(27): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(235): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\enemymanager.h(235): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Generating Code...
 d:\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop\gameloop.cpp(56): warning C4715: 'GameLoop::init': not all control paths return a value
   C++ GameLoop.vcxproj -> D:\cmp5327-c-programming-for-games-assessment-AntonioMihaiDima\C++ assignment\C++ GameLoop\Debug\C++ GameLoop.exe

@@ -163,7 +163,6 @@ public:
 				if (e.x > 768)
 				{
 					enemiesremaining--;
-					//cout << enemiesremaining << " ";
 					if (!EnemyHit)
 						healthsubstract += 80;
 					else
