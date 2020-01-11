@@ -57,7 +57,7 @@ protected:
 	int xslot;
 	int yslot;
 	float angle = 0;
-	int xpos = 768;
+	int xpos = 770;
 	int ypos = 384;
 	SDL_Rect position;
 	SDL_Texture *playertexture;

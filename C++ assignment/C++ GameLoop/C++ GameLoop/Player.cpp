@@ -359,6 +359,13 @@ void Player::update()
 			}
 		}
 
+		//Found a bug where when the player travels to the next wave and is on the far right tile (really close to the right set of walls) the character is 2 pixels into the wall tile and when the next level starts the character
+		//is thrown out of the map. In this code below the program checks if the player is at that unwanted position and just before the next wave starts pushes the character by 2 pixels to the left. This fixed the bug.
+		if ((xpos >= 768) && (ypos == 736) && (tilemap->WaveComplete == false))
+			ypos = 734;
+
+		if ((xpos >= 768) && (ypos < 34) && (tilemap->WaveComplete == false))
+			ypos = 34;
 
 		if (upmovement && !uppercollision)
 		{
@@ -392,11 +399,12 @@ void Player::update()
 				angle = 90;
 			}
 		}
+
 	}
 	//Have the player stay in the boundaries of the screen.
 	if (xpos <= 0)
 		xpos = xpos + 2;
-	if (xpos >= 768)
+	if (xpos >= 770)
 		xpos = xpos - 2;
 
 	//Bullet animation.
