@@ -99,7 +99,7 @@ public:
 
 			for (int i = 0; i < 24; i++)
 				for (int j = 0; j < 24; j++)
-					if ((player->obstacles[int(y / 32)][int(x / 32)] == 1))
+					if ((player->obstacles[int(y / 32)][int(x / 32)] == 1) || (player->obstacles[int(y / 32)][int(x / 32)] == 4))
 						distance = 1501;
 
 

@@ -132,7 +132,7 @@ void Player::update()
 
 		if (NoMoreEnemies == false)
 		{
-			if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2))
+			if ((obstacles[xslot - 1][yslot] == 1) || (obstacles[xslot - 1][yslot] == 2) || (obstacles[xslot - 1][yslot] == 4) || (obstacles[xslot - 1][yslot] == 5))
 			{
 				if (angle == 0)
 				{
@@ -147,7 +147,7 @@ void Player::update()
 				}
 
 			}
-			if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2))
+			if ((obstacles[xslot - 1][yslot - 1] == 1) || (obstacles[xslot - 1][yslot - 1] == 2) || (obstacles[xslot - 1][yslot - 1] == 4) || (obstacles[xslot - 1][yslot - 1] == 5))
 			{
 				if (angle == 0)
 				{
@@ -160,7 +160,7 @@ void Player::update()
 					ypos = (yslot) * 32 + 2;
 				}
 			}
-			if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2))
+			if ((obstacles[xslot][yslot] == 1) || (obstacles[xslot][yslot] == 2) || (obstacles[xslot][yslot] == 4) || (obstacles[xslot][yslot] == 5))
 			{
 				if (angle == 180)
 				{
@@ -173,7 +173,7 @@ void Player::update()
 					ypos = (yslot - 1) * 32 - 2;
 				}
 			}
-			if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2))
+			if ((obstacles[xslot][yslot - 1] == 1) || (obstacles[xslot][yslot - 1] == 2) || (obstacles[xslot][yslot - 1] == 4) || (obstacles[xslot][yslot - 1] == 5))
 			{
 				if (angle == 180)
 				{
@@ -208,13 +208,13 @@ void Player::update()
 				{
 					if (directiontobepicked == false)
 					{
-						if ((obstacles[int(xpos / 32) + 1][int(ypos / 32)] == 0) && (bottomcollision == false))
+						if (((obstacles[int(xpos / 32) + 1][int(ypos / 32)] == 0) || (obstacles[int(xpos / 32) + 1][int(ypos / 32)] == 3)) && (bottomcollision == false))
 						{
 							directionpicked = 0;
 							angle = 180;
 							leftdirection = false;
 						}
-						else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+						else if ((obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0) || (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 3))
 						{
 							if (directionpicked == 2)
 							{
@@ -224,7 +224,7 @@ void Player::update()
 							bottomcollision = false;
 							angle = 90;
 						}
-						else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+						else if ((obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0) || (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 3))
 						{
 							directionpicked = 2;
 							bottomcollision = false;
@@ -291,14 +291,14 @@ void Player::update()
 				{
 					if (directiontobepicked == false)
 					{
-						if ((obstacles[int(xpos / 32) - 1][int(ypos / 32)] == 0) && (uppercollision == false))
+						if (((obstacles[int(xpos / 32) - 1][int(ypos / 32)] == 0) || (obstacles[int(xpos / 32) - 1][int(ypos / 32)] == 3)) && (uppercollision == false))
 						{
 							angle = 0;
 							tilemap->uppercollision = false;
 							directionpicked = 0;
 							leftdirection = false;
 						}
-						else if (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0)
+						else if ((obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 0) || (obstacles[int(xpos / 32)][int(ypos / 32) + 1] == 3))
 						{
 							if (directionpicked == 2)
 							{
@@ -309,7 +309,7 @@ void Player::update()
 							directionpicked = 1;
 							uppercollision = true;
 						}
-						else if (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0)
+						else if ((obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 0) || (obstacles[int(xpos / 32)][int(ypos / 32) - 1] == 3))
 						{
 							angle = 270;
 							tilemap->uppercollision = true;
@@ -452,7 +452,7 @@ void Player::draw()
 		SDL_RenderCopyEx(this->renderer, this->PlayerReload, 0, &position, angle, center, SDL_FLIP_NONE);
 	
 
-	for (int j = 23; j > 23 - BulletNumber; j --)
+	for (j = 23; j > 23 - BulletNumber; j --)
 	{
 		if (AnimationNumber == 1)
 		{

@@ -37,13 +37,25 @@ void Tilemap::init()
 		MapTex = SDL_CreateTextureFromSurface(this->renderer, tmpSurface);
 		SDL_FreeSurface(tmpSurface);
 
-		SDL_Surface* brickSurface = IMG_Load("debug/Brick.jpg");
-		WallTex = SDL_CreateTextureFromSurface(this->renderer, brickSurface);
-		SDL_FreeSurface(brickSurface);
+		SDL_Surface* blockSurface = IMG_Load("debug/Block.png");
+		WallTex = SDL_CreateTextureFromSurface(this->renderer, blockSurface);
+		SDL_FreeSurface(blockSurface);
 
 		SDL_Surface* waterSurface = IMG_Load("debug/Water.jpg");
 		WaterTex = SDL_CreateTextureFromSurface(this->renderer, waterSurface);
 		SDL_FreeSurface(waterSurface);
+
+		SDL_Surface* LavaSurface = IMG_Load("debug/Lava.png");
+		LavaTex = SDL_CreateTextureFromSurface(this->renderer, LavaSurface);
+		SDL_FreeSurface(LavaSurface);
+
+		SDL_Surface * BoxSurface = IMG_Load("debug/Box.png");
+		BoxTex = SDL_CreateTextureFromSurface(this->renderer, BoxSurface);
+		SDL_FreeSurface(BoxSurface);
+
+		SDL_Surface * ConcreteSurface = IMG_Load("debug/Concrete.png");
+		ConcreteTex = SDL_CreateTextureFromSurface(this->renderer, ConcreteSurface);
+		SDL_FreeSurface(ConcreteSurface);
 
 
 		//Here we want to set number 1's for the map array, which later we will use to generate wall textures.
@@ -91,30 +103,6 @@ void Tilemap::init()
 		{
 			tilearrayvalues[i] = 44 + (rand() % 5);
 		}
-
-
-		
-
-		/*for (int i = 0; i < 66; i++)
-			cout << tilearrayvalues[i] << " ";
-			*/
-
-
-		
-		/*
-		wall = new Wall(this->renderer);
-		water = new Water(this->renderer);
-
-		*/
-
-
-		/*position.x = 0;
-		position.y = 0;
-		position.h = 32;
-		position.w = 32;
-		*/
-
-		//wall->counter();
 	
 
 
@@ -176,10 +164,8 @@ void Tilemap::update()
 				tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
 				b++;
 
-				//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
 			}
 
-			//checkmap = false;
 		}
 
 
@@ -283,10 +269,8 @@ void Tilemap::update()
 					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
 					b++;
 
-					//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
 				}
 
-				//checkmap = false;
 			}
 
 
@@ -350,10 +334,8 @@ void Tilemap::update()
 					tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] = 1;
 					b++;
 
-					//cout << tilemaparray[tilearrayvalues[b]][tilearrayvalues[a]] << " ";
 				}
 
-				//checkmap = false;
 			}
 
 
@@ -410,6 +392,12 @@ void Tilemap::draw()
 				SDL_RenderCopy(this->renderer, WallTex, NULL, &firstposition);
 			if (tilemaparray[i][j] == 2)
 				SDL_RenderCopy(this->renderer, WaterTex, NULL, &firstposition);
+			if (tilemaparray[i][j] == 3)
+				SDL_RenderCopy(this->renderer, ConcreteTex, NULL, &firstposition);
+			if (tilemaparray[i][j] == 4)
+				SDL_RenderCopy(this->renderer, BoxTex, NULL, &firstposition);
+			if (tilemaparray[i][j] == 5)
+				SDL_RenderCopy(this->renderer, LavaTex, NULL, &firstposition);
 
 			//This loop is just to test if we constructed the tilemap right
 			//We use the checkmap boolean to make sure that the loop runs only once
@@ -417,24 +405,6 @@ void Tilemap::draw()
 			
 		}
 
-	/*for (int i = 25; i < 40; i++)
-		for (int j = 0; j < 25; j++)
-		{
-			SDL_Rect secondposition = { j * 32, i * 32 + DownwardsMovementValue, width, height };
-			
-
-			
-
-
-			if (tilemaparray[i][j] == 0)
-				SDL_RenderCopy(this->renderer, MapTex, NULL, &secondposition);
-			if (tilemaparray[i][j] == 1)
-				SDL_RenderCopy(this->renderer, WallTex, NULL, &secondposition);
-			if (tilemaparray[i][j] == 2)
-				SDL_RenderCopy(this->renderer, WaterTex, NULL, &secondposition);
-
-		}
-		*/
 
 	for (int i = 49; i > 39; i--)
 	{
@@ -444,9 +414,17 @@ void Tilemap::draw()
 		{
 
 			//j should stay positive to render sprites in the same 25 tiles horizontal range.
-			SDL_Rect thirdposition = { j * 32, -1 * toprenderingvalue * 32 + DownwardsMovementValue, width, height};
+			SDL_Rect thirdposition = { j * 32, -1 * toprenderingvalue * 32 + DownwardsMovementValue, width, height };
 
-
+			if (TileChange)
+			{
+				if (tilemaparray[i][j] == 0)
+					tilemaparray[i][j] = 3;
+				if (tilemaparray[i][j] == 1)
+					tilemaparray[i][j] = 4;
+				if (tilemaparray[i][j] == 2)
+					tilemaparray[i][j] = 5;
+			}
 
 			if (tilemaparray[i][j] == 0)
 				SDL_RenderCopy(this->renderer, MapTex, NULL, &thirdposition);
@@ -454,6 +432,12 @@ void Tilemap::draw()
 				SDL_RenderCopy(this->renderer, WallTex, NULL, &thirdposition);
 			if (tilemaparray[i][j] == 2)
 				SDL_RenderCopy(this->renderer, WaterTex, NULL, &thirdposition);
+			if (tilemaparray[i][j] == 3)
+				SDL_RenderCopy(this->renderer, ConcreteTex, NULL, &thirdposition);
+			if (tilemaparray[i][j] == 4)
+				SDL_RenderCopy(this->renderer, BoxTex, NULL, &thirdposition);
+			if (tilemaparray[i][j] == 5)
+				SDL_RenderCopy(this->renderer, LavaTex, NULL, &thirdposition);
 			
 		}
 		toprenderingvalue++;
@@ -488,5 +472,9 @@ void Tilemap::clean()
 	SDL_DestroyTexture(this->MapTex);
 	SDL_DestroyTexture(this->WaterTex);
 	SDL_DestroyTexture(this->WallTex);
+	SDL_DestroyTexture(this->ConcreteTex);
+	SDL_DestroyTexture(this->LavaTex);
+	SDL_DestroyTexture(this->BoxTex);
+
 }
 

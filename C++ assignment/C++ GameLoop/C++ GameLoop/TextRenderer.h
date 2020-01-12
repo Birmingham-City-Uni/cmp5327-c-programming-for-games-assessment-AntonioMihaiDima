@@ -69,6 +69,11 @@ public:
 			WaveTextChanged = true;
 			
 		}
+		if (WaveNum == 3)
+		{
+			enemymanager->bulletmanager->player->tilemap->TileChange = true;
+		}
+
 		if ((enemymanager->bulletmanager->player->NoMoreEnemies == false) && (WaveTextChanged))
 		{
 			WaveNum += 1;

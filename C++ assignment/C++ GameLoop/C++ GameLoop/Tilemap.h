@@ -35,11 +35,16 @@ public:
 	bool mapscrolled = false;
 	int mainwindowcounter = 0;
 
+	bool TileChange = false;
+
 private:
 
 	SDL_Texture* MapTex;
 	SDL_Texture* WallTex;
 	SDL_Texture* WaterTex;
+	SDL_Texture* ConcreteTex;
+	SDL_Texture* LavaTex;
+	SDL_Texture* BoxTex;
 	SDL_Renderer * renderer;
 	SDL_Rect * firstposition;
 	SDL_Rect * secondposition;

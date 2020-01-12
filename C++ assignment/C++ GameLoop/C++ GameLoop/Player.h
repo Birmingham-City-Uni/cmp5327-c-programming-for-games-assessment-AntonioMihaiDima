@@ -51,6 +51,7 @@ public:
 	int directionpicked;
 	bool perfectxpos = false;
 
+	Tilemap * tilemap;
 
 protected:
 
@@ -59,6 +60,7 @@ protected:
 	float angle = 0;
 	int xpos = 770;
 	int ypos = 384;
+	int j = 23;
 	SDL_Rect position;
 	SDL_Texture *playertexture;
 	SDL_Texture * PlayerReload;
@@ -66,7 +68,7 @@ protected:
 	SDL_Texture * BulletAnimated;
 	float BulletRotation = 270;
 	SDL_Renderer *renderer;
-	Tilemap * tilemap;
+
 
 	int AnimationNumber = 1;
 };

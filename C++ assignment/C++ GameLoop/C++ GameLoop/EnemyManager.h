@@ -82,14 +82,14 @@ public:
 
 					if (e.directiontobepicked == false)
 					{
-						if ((bulletmanager->player->obstacles[int(e.x / 32) + 1][int(e.y / 32)] == 0) && (e.bottomcollision == false))
+						if (((bulletmanager->player->obstacles[int(e.x / 32) + 1][int(e.y / 32)] == 0) || (bulletmanager->player->obstacles[int(e.x / 32) + 1][int(e.y / 32)] == 3)) && (e.bottomcollision == false))
 						{
 
 							e.directionpicked = 0;
 							e.rotation = 0;
 							e.leftdirection = false;
 						}
-						else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0)
+						else if ((bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 0) || (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) + 1] == 3))
 						{
 							if (e.directionpicked == 2)
 							{
@@ -100,7 +100,7 @@ public:
 							e.rotation = 270;
 
 						}
-						else if (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0)
+						else if ((bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 0) || (bulletmanager->player->obstacles[int(e.x / 32)][int(e.y / 32) - 1] == 3))
 						{
 							e.directionpicked = 2;
 							e.bottomcollision = false;
