@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>bulletmanager.h</FILENAME>
+      <LINE>32</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'BulletManager::bulletTexture' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>BulletManager::{ctor}</FUNCTION>
+    <DECORATED>??0BulletManager@@QAE@PAUSDL_Renderer@@PAVPlayer@@PAVTilemap@@@Z</DECORATED>
+    <FUNCLINE>32</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>enemymanager.h</FILENAME>
+      <LINE>31</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'EnemyManager::Enemy1' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>EnemyManager::{ctor}</FUNCTION>
+    <DECORATED>??0EnemyManager@@QAE@PAUSDL_Renderer@@PAVBulletManager@@@Z</DECORATED>
+    <FUNCLINE>31</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>enemymanager.h</FILENAME>
+      <LINE>31</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'EnemyManager::Enemy1Surface' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>EnemyManager::{ctor}</FUNCTION>
+    <DECORATED>??0EnemyManager@@QAE@PAUSDL_Renderer@@PAVBulletManager@@@Z</DECORATED>
+    <FUNCLINE>31</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>enemymanager.h</FILENAME>
+      <LINE>31</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'EnemyManager::HealthBar' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>EnemyManager::{ctor}</FUNCTION>
+    <DECORATED>??0EnemyManager@@QAE@PAUSDL_Renderer@@PAVBulletManager@@@Z</DECORATED>
+    <FUNCLINE>31</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>enemymanager.h</FILENAME>
+      <LINE>31</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'EnemyManager::NoHealthBar' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>EnemyManager::{ctor}</FUNCTION>
+    <DECORATED>??0EnemyManager@@QAE@PAUSDL_Renderer@@PAVBulletManager@@@Z</DECORATED>
+    <FUNCLINE>31</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoniomihaidima\c++ assignment\c++ gameloop\c++ gameloop</FILEPATH>
+      <FILENAME>enemymanager.h</FILENAME>
+      <LINE>31</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'EnemyManager::spawnpicker' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>EnemyManager::{ctor}</FUNCTION>
+    <DECORATED>??0EnemyManager@@QAE@PAUSDL_Renderer@@PAVBulletManager@@@Z</DECORATED>
+    <FUNCLINE>31</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\laptop\documents\github\cmp5327-c-programming-for-games-assessment-antoni

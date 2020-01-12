@@ -79,9 +79,9 @@ public:
 		
 	
 			if (IsShooting) {
-				x += sin(rotation * PI / 180.0f)* BULLET_VELOCITY;
-				y -= cos(rotation * PI / 180.0f)* BULLET_VELOCITY;
-				distance += BULLET_VELOCITY;
+				x += sin(rotation * PI / 180.0f)* BulletVelocity;
+				y -= cos(rotation * PI / 180.0f)* BulletVelocity;
+				distance += BulletVelocity;
 			}
 
 			if (distance > 1501)
@@ -122,7 +122,7 @@ private:
 	//time limit between shots
 	const int SHOOT_TIMER_MS = 2300;
 	//numer of pixels travelled per frame
-	const int BULLET_VELOCITY = 10;
+	const int BulletVelocity = 10;
 	unsigned int lastShot = 0;
 	float x;
 	float y;

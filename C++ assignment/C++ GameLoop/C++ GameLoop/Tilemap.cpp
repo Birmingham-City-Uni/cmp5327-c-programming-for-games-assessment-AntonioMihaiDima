@@ -447,24 +447,7 @@ void Tilemap::draw()
 
 
 
-
-	if (checkmap == true)
-	{
-		for (int i = 0; i < 50; i++)
-		{
-			for (int j = 0; j < 25; j++)
-			{
-				if (j < 24)
-					cout << tilemaparray[i][j] << " ";
-				if (j == 24)
-					cout << tilemaparray[i][j] << endl;
-			}
-
-		}
-		checkmap = false;
-
-
-	}	
+	
 }
 
 void Tilemap::clean()

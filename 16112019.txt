@@ -1,5 +1,0 @@
-things to do today:
-1) Fix bullet spawn at angles
-2) Movement collision for tiles
-3) Shooting collision for tiles
-4) Static enemy collision
